@@ -2,7 +2,7 @@ import React from 'react'
 import Login from './pages/Login'
 import Session from './pages/Session'
 
-function App() {
+function App () {
   return (
     <div className='App'>
       <Login exact path='/login' component={_ => <Login />} />
