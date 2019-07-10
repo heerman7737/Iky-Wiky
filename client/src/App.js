@@ -6,7 +6,7 @@ function App () {
   return (
     <div className='App'>
       <Login exact path='/login' component={_ => <Login />} />
-      <Session exact path='/Session' component={_ => <Session />} />
+      {/* <Session exact path='/Session' component={_ => <Session />} /> */}
     </div>
   )
 }
