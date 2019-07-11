@@ -32,6 +32,7 @@ class RegisterModal extends React.Component {
 
     handleAddUser= _ => {
       chatUtils.addUser()
+      .then()
     }
 
     return (
