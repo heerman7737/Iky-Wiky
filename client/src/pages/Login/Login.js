@@ -19,43 +19,43 @@ class Login extends Component {
     });
   }
   
-  connectToChatkit=(event)=>{
-      event.preventDefault()
-      axios.post('http://localhost:3002/users', { userUID })
-    .then(() => {
-      const tokenProvider = new Chatkit.TokenProvider({
-        url: 'http://localhost:3002/authenticate',
-      });
+//   connectToChatkit=(event)=>{
+//       event.preventDefault()
+//       axios.post('http://localhost:3002/users', { userUID })
+//     .then(() => {
+//       const tokenProvider = new Chatkit.TokenProvider({
+//         url: 'http://localhost:3002/authenticate',
+//       });
 
-      const chatManager = new Chatkit.ChatManager({
-        instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
-        userUId,
-        tokenProvider,
-      });
+//       const chatManager = new Chatkit.ChatManager({
+//         instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
+//         userUId,
+//         tokenProvider,
+//       });
 
-      return chatManager
-        .connect({
-          onAddedToRoom: room => {
-            const { rooms } = this.state;
-            this.setState({
-              rooms: [...rooms, room],
-            });
-          },
-        })
-        .then(currentUser => {
-          this.setState(
-            {
-              currentUser,
-              showLogin: false,
-              isLoading: false,
-              rooms: currentUser.rooms,
-            },
-            () => connectToRoom.call(this)
-          );
-        });
-    })
-    .catch(console.error);
-}
+//       return chatManager
+//         .connect({
+//           onAddedToRoom: room => {
+//             const { rooms } = this.state;
+//             this.setState({
+//               rooms: [...rooms, room],
+//             });
+//           },
+//         })
+//         .then(currentUser => {
+//           this.setState(
+//             {
+//               currentUser,
+//               showLogin: false,
+//               isLoading: false,
+//               rooms: currentUser.rooms,
+//             },
+//             () => connectToRoom.call(this)
+//           );
+//         });
+//     })
+//     .catch(console.error);
+// }
 
   
   render() {

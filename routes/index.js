@@ -1,3 +1,3 @@
 module.exports = app => {
-  require('./vergeRoutes.js')(app)
+  require('./chatRoutes.js')(app)
 }

@@ -41,6 +41,6 @@ app.post('/authenticate', (req, res) => {
 });
 require('./routes')(app)
 
-require('mongoose').connect('mongodb://localhost/verge_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
+require('mongoose').connect('mongodb://localhost/users_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
   .then(_ => app.listen(3001))
   .catch(error => console.log(error))

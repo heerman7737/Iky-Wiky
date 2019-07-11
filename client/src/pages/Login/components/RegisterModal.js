@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import chatUtils from '../../../utils/chatUtils.js'
 
 class RegisterModal extends React.Component {
   render() {
@@ -29,18 +30,26 @@ class RegisterModal extends React.Component {
       padding: 30
     };
 
+    handleAddUser= _ => {
+      chatUtils.addUser()
+    }
+
     return (
       <div className="backdrop" style={{backdropStyle}}>
         <div className="modal" style={{modalStyle}}>
           {this.props.children}
           <form> 
+          <input
+        placeholder="First Name"/>
+                <input
+        placeholder="Last Name"/>
         <input
-        placeholder="username"/>
+        placeholder="Username"/>
         <input
-        placeholder="password"/>
+        placeholder="Password"/>
         <input
-        placeholder="confirm your password"/>
-        <button>Submit</button>
+        placeholder="Phone Number"/>
+        <button onClick="handleAddUser">Submit</button>
         </form>
           <div className="footer">
             <button onClick={this.props.onClose}>
