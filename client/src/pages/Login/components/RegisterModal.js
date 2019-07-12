@@ -17,14 +17,6 @@ class RegisterModal extends React.Component {
     _.preventDefault()
     console.log(this.state)
     chatUtils.addUser(this.state)
-    // .then(({ data }) => this.setState({
-    //   first_name: this.first_name,
-    //   last_name: this.last_name,
-    //   phone: this.phone,
-    //   avatar: this.avatar, 
-    //   username: this.username,
-    //   password: this.password }))
-    // .catch(error => console.log(error))
   }
 
   handleInputs = event => {
