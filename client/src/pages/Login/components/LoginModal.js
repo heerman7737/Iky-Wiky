@@ -11,24 +11,21 @@ class LoginModal extends React.Component {
     last_name: "",
     phone: "",
     avatar: "", //url from AWS
-    objectId: ""
+    _id: ""
   }
   
   handlePullUserData = _ => {
     _.preventDefault()
-    chatUtils.login()
-    .then(console.log(data))
-    // .then(({ data }) => this.setState({ 
-    //   first_name: data.first_name,
-    //   last_name: data.last_name,
-    //   phone: data.phone,
-    //   avatar: data.avatar,
-    //   objectId: data.objectId
-    // }))
-    .then(console.log(this.state))
+    chatUtils.login(this.state.username,this.state.password)
+    .then((data) =>localStorage.setItem("userId",data.data[0]._id))
+    .then(console.log("Working"))
     .catch(error => console.log(error))
   }
-
+  handleInputs = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
 
   render () {
     // Render nothing if the "show" prop is false
@@ -62,8 +59,8 @@ class LoginModal extends React.Component {
         <div className='modal' style={{ modalStyle }}>
           {this.props.children}
           <form>
-            <input id='username' placeholder='username' />
-            <input id='password' placeholder='password' />
+            <input onChange={this.handleInputs} id='username' placeholder='username' />
+            <input onChange={this.handleInputs} id='password' placeholder='password' />
             <button onClick={this.handlePullUserData}>Submit</button>
           </form>
           <div className='footer'>

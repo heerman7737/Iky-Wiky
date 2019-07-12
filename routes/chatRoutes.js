@@ -13,7 +13,7 @@ module.exports = app => {
       .then(_ => res.sendStatus(200))
       .catch(error => console.log(error))
   })
-  app.get('/login/{:username}/{:password}', (req, res) => {
+  app.get(`/login/:username/:password`, (req, res) => {
     Chat.find({ username: req.params.username, password: req.params.password })
       .then(login => res.json(login))
       .catch(error => console.log(error))
