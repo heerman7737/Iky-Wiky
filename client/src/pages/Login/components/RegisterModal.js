@@ -14,21 +14,23 @@ class RegisterModal extends React.Component {
   }
 
   handleAddUser = _ => {
-    chatUtils.addUser()
-    .then(({ data }) => this.setState({
-      first_name: this.first_name,
-      last_name: this.last_name,
-      phone: this.phone,
-      avatar: this.avatar, 
-      username: this.username,
-      password: this.password }))
-    .catch(error => console.log(error))
+    _.preventDefault()
+    console.log(this.state)
+    chatUtils.addUser(this.state)
+    // .then(({ data }) => this.setState({
+    //   first_name: this.first_name,
+    //   last_name: this.last_name,
+    //   phone: this.phone,
+    //   avatar: this.avatar, 
+    //   username: this.username,
+    //   password: this.password }))
+    // .catch(error => console.log(error))
   }
 
   handleInputs = event => {
-    addEventListener.onKeyDown(event.target.value = this.setState(event.target.id))
-    .then(_ => sendStatus(200))
-    .catch(error => console.log(error))
+    this.setState({
+      [event.target.id]: event.target.value
+    })
   }
 
   render() {
@@ -65,11 +67,11 @@ class RegisterModal extends React.Component {
         <div className="modal" style={{modalStyle}}>
           {this.props.children}
           <form> 
-          <input onKeyDown={handleInputs} id="first_name" placeholder="First Name"/>
-        <input onKeyDown={handleInputs} id="last_name" placeholder="Last Name"/>
-        <input onKeyDown={handleInputs} id="username" placeholder="Username"/>
-        <input onKeyDown={handleInputs} id="password" placeholder="Password"/>
-        <input onKeyDown={handleInputs} id="phone" placeholder="Phone Number"/>
+          <input onChange={this.handleInputs} id="first_name" placeholder="First Name"/>
+          <input onChange={this.handleInputs} id="last_name" placeholder="Last Name"/>
+          <input onChange={this.handleInputs} id="username" placeholder="Username"/>
+          <input onChange={this.handleInputs} id="password" placeholder="Password"/>
+          <input onChange={this.handleInputs} id="phone" placeholder="Phone Number"/>
         <button onClick={this.handleAddUser}>Submit</button>
         </form>
           <div className="footer">
