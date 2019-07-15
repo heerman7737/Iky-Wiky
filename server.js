@@ -16,7 +16,7 @@ app.post('/user',(req,res)=>
     const {userId}= req.body
     const {user_name}=req.body
     console.log(req.body)
-    // const username=req.query.name
+
     chatkit.createUser({
       id: userId,
       name: user_name

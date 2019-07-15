@@ -19,16 +19,19 @@ class RegisterModal extends React.Component {
     console.log(this.state)
     chatUtils.addUser(this.state)
     .then(chatUtils.login(this.state.username,this.state.password)
+    .then((data) =>{
+      localStorage.setItem("userId",data.data[0]._id)
+      localStorage.setItem("user_name",data.data[0].username)
+  })
     .then((data) =>console.log(data.data[0]._id))
-    // .then((data) =>localStorage.setItem("userId",data.data[0]._id))
     .catch(error => console.log(error)))
     
     let userId= localStorage.getItem("userId")
+    let user_name= localStorage.getItem("user_name")
     console.log('user '+userId)
-    let user_name=this.state.username
     axios.post('http://localhost:3001/user',{userId,user_name})
     .then(()=>{
-      console.log(userId)
+      console.log(userId,user_name)
       const tokenProvider = new Chatkit.TokenProvider({
         url: 'http://localhost:3001/authenticate',
       });

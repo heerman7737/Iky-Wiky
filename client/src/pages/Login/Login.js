@@ -18,6 +18,9 @@ class Login extends Component {
         isRegisterOpen: !this.state.isRegisterOpen,
     });
   } 
+  clearlocalStorage=()=>{
+    localStorage.clear()  
+  }
 
   render() {
     return (
@@ -37,6 +40,7 @@ class Login extends Component {
           onClose={this.toggleModal}
           connection={ConnectToChatkit}>
         </RegisterModal>
+        <button onClick={this.clearlocalStorage}>Clear</button>
       </div>
     );
   }

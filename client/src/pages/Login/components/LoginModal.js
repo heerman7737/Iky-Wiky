@@ -17,7 +17,9 @@ class LoginModal extends React.Component {
   handlePullUserData = _ => {
     _.preventDefault()
     chatUtils.login(this.state.username,this.state.password)
-    .then((data) =>localStorage.setItem("userId",data.data[0]._id))
+    .then((data) =>{
+      console.log(data)
+      localStorage.setItem("userId",data.data[0]._id)})
     .then(console.log("Working"))
     .catch(error => console.log(error))
   }
