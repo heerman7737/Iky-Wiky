@@ -75,8 +75,8 @@ class RegisterModal extends React.Component {
               <input onChange={this.handleInputs} id="last_name" placeholder="Last Name" />
             </div>
             <div className="form-group">
-              <label htmlFor="user_name">Username</label>
-              <input onChange={this.handleInputs} id="user_name" placeholder="Username" />
+              <label htmlFor="username">Username</label>
+              <input onChange={this.handleInputs} id="username" placeholder="Username" />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
