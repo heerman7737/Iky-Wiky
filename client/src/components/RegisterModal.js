@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import chatUtils from '../../../utils/chatUtils.js'
+import chatUtils from '../utils/chatUtils.js'
 import Chatkit from '@pusher/chatkit-client'
 import axios from 'axios'
+import './Register.scss'
 class RegisterModal extends React.Component {
 
   state = {
@@ -56,48 +56,41 @@ class RegisterModal extends React.Component {
   }
 
   render() {
-    // Render nothing if the "show" prop is false
-    if(!this.props.show) {
-      return null;
-    }
-
-    // The gray background
-    const backdropStyle = {
-      position: 'fixed',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: 'rgba(0,0,0,0.3)',
-      padding: 50
-    };
-
-    // The modal "window"
-    const modalStyle = {
-      backgroundColor: '#fff',
-      borderRadius: 5,
-      maxWidth: 500,
-      minHeight: 300,
-      margin: '0 auto',
-      padding: 30
-    };
-
-
 
     return (
-      <div className="backdrop" style={{backdropStyle}}>
-        <div className="modal" style={{modalStyle}}>
-          {this.props.children}
-          <form connection={this.props}> 
-          <input onChange={this.handleInputs} id="first_name" placeholder="First Name"/>
-          <input onChange={this.handleInputs} id="last_name" placeholder="Last Name"/>
-          <input onChange={this.handleInputs} id="username" placeholder="Username"/>
-          <input onChange={this.handleInputs} id="password" placeholder="Password"/>
-          <input onChange={this.handleInputs} id="phone" placeholder="Phone Number"/>
-        <button onClick={this.handleAddUser}>Submit</button>
-        </form>
-          <div className="footer">
-            <button onClick={this.props.onClose}>Close</button>
+      <div className="base-container" ref={this.props.containerRef}>
+            {this.props.children}
+        <div className="header">Register</div>
+        <div className="content">
+          <div className="image">
+            
+          </div>
+          <div className="form" connection={this.props}>
+            <div className="form-group">
+              <label htmlFor="username">First Name</label>
+              <input onChange={this.handleInputs} id="first_name" placeholder="First Name" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Last Name</label>
+              <input onChange={this.handleInputs} id="last_name" placeholder="Last Name" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">UserName</label>
+              <input onChange={this.handleInputs} id="username" placeholder="Username" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input onChange={this.handleInputs} id="username" placeholder="Username" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input onChange={this.handleInputs} id="phone" placeholder="Phone Number" />
+            </div>
+            <div className="form-group">
+            <button onClick={this.handleAddUser} className="btn">
+            Register
+          </button>
+            </div>
           </div>
         </div>
       </div>
@@ -105,10 +98,5 @@ class RegisterModal extends React.Component {
   }
 }
 
-RegisterModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  show: PropTypes.bool,
-  children: PropTypes.node
-};
 
 export default RegisterModal;
