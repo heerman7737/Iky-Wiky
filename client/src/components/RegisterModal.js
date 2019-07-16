@@ -67,23 +67,23 @@ class RegisterModal extends React.Component {
           </div>
           <div className="form" connection={this.props}>
             <div className="form-group">
-              <label htmlFor="username">First Name</label>
+              <label htmlFor="firstname">First Name</label>
               <input onChange={this.handleInputs} id="first_name" placeholder="First Name" />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Last Name</label>
+              <label htmlFor="lastname">Last Name</label>
               <input onChange={this.handleInputs} id="last_name" placeholder="Last Name" />
             </div>
             <div className="form-group">
-              <label htmlFor="password">UserName</label>
+              <label htmlFor="username">Username</label>
               <input onChange={this.handleInputs} id="username" placeholder="Username" />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input onChange={this.handleInputs} id="username" placeholder="Username" />
+              <input onChange={this.handleInputs} id="password" placeholder="Password" />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="phone">Phone</label>
               <input onChange={this.handleInputs} id="phone" placeholder="Phone Number" />
             </div>
             <div className="form-group">
