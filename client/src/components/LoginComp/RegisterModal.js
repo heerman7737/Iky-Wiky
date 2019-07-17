@@ -11,7 +11,8 @@ class RegisterModal extends React.Component {
     phone: "",
     avatar: "", //url from AWS
     username: "",
-    password: ""
+    password: "",
+    id:""
   }
 
   handleAddUser = e => {
@@ -22,10 +23,8 @@ class RegisterModal extends React.Component {
     .then((data) =>{
       localStorage.setItem("userId",data.data[0]._id)
       localStorage.setItem("user_name",data.data[0].username)
-  })
-    .then((data) =>console.log(data.data[0]._id))
-    .catch(error => console.log(error)))
-    
+  })  
+  .then(()=>{
     let userId= localStorage.getItem("userId")
     let user_name= localStorage.getItem("user_name")
     console.log('user '+userId)
@@ -40,11 +39,7 @@ class RegisterModal extends React.Component {
         userId,
         tokenProvider
       });
-      return chatManager.connect({
-        onAddedToRoom: room => {
-          console.log(`Added to room ${room.name}`)
-        }
-      })
+      return chatManager.connect()
       .then(currentUser => {
         console.log('Successful connection', currentUser)
       })
@@ -52,12 +47,17 @@ class RegisterModal extends React.Component {
         console.log('Error on connection', err)
       })
     })
+  })
+  
+    )
+  
+    
   }
   handleInputs = event => {
     this.setState({
       [event.target.id]: event.target.value
     })
-  }
+ }
 
   render() {
 

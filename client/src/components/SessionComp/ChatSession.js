@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Message extends React.Component{
+class ChatSession extends React.Component{
     state={
         message:[]
     }
@@ -12,4 +12,4 @@ class Message extends React.Component{
     }
 }
 
-export default Message;
+export default ChatSession;

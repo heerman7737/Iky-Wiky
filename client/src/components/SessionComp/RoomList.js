@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Room extends React.Component{
+class RoomList extends React.Component{
     render(){
         return(
             <>
@@ -9,4 +9,4 @@ class Room extends React.Component{
     }
 }
 
-export default Room;
+export default RoomList;

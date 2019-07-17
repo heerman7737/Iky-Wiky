@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Message from '../../components/SessionComp/Message'
+import ChatSession from '../../components/SessionComp/ChatSession'
 // import Room from '../../components/SessionComp/Room'
 class Session extends Component {
 
@@ -10,7 +10,7 @@ class Session extends Component {
     render() {
         return (
             <>
-                <Message/>
+                <ChatSession/>
                 {/* <Room/> */}
 
             </>
