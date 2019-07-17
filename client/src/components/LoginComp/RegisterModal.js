@@ -1,5 +1,5 @@
 import React from 'react';
-import chatUtils from '../utils/chatUtils.js'
+import chatUtils from '../../utils/chatUtils.js'
 import Chatkit from '@pusher/chatkit-client'
 import axios from 'axios'
 import './Register.scss'
@@ -40,7 +40,11 @@ class RegisterModal extends React.Component {
         userId,
         tokenProvider
       });
-      return chatManager.connect()
+      return chatManager.connect({
+        onAddedToRoom: room => {
+          console.log(`Added to room ${room.name}`)
+        }
+      })
       .then(currentUser => {
         console.log('Successful connection', currentUser)
       })

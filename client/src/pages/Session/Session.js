@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
-import chatUtils from '../../utils/chatUtils.js'
-
+import Message from '../../components/SessionComp/Message'
+// import Room from '../../components/SessionComp/Room'
 class Session extends Component {
 
     state = {
-        verges: []
     }
 
 
     render() {
         return (
             <>
-                <nav>
-                    <button>Hi</button>
-                    <button>Chat Here</button>
-                </nav>
+                <Message/>
+                {/* <Room/> */}
 
             </>
         )

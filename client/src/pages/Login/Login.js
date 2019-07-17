@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LoginModal from '../../components/LoginModal';
-import RegisterModal from '../../components/RegisterModal';
+import LoginModal from '../../components/LoginComp/LoginModal';
+import RegisterModal from '../../components/LoginComp/RegisterModal';
 import ConnectToChatkit from '../../utils/apiUtils'
 import './Main.scss'
 class Login extends Component {
@@ -58,6 +58,9 @@ class Login extends Component {
               containerRef={ref => (this.rightSide = ref)}
               onClick={this.changeState.bind(this)}
             />
+<button onClick={this.clearlocalStorage}>Clear</button> 
+
+
           </div>
         </div>
       );

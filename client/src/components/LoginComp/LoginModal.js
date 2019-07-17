@@ -1,5 +1,5 @@
 import React from 'react'
-import chatUtils from '../utils/chatUtils'
+import chatUtils from '../../utils/chatUtils'
 import './Login.scss'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
