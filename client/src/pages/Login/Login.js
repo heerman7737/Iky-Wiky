@@ -7,7 +7,8 @@ class Login extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        isLogginActive: true
+        isLogginActive: true,
+        // currentUser: null
       };
     }
   
