@@ -3,6 +3,7 @@ import chatUtils from '../../utils/chatUtils.js'
 import Chatkit from '@pusher/chatkit-client'
 import axios from 'axios'
 import './Register.scss'
+import history from '../../utils/history'
 class RegisterModal extends React.Component {
 
   state = {
@@ -12,7 +13,7 @@ class RegisterModal extends React.Component {
     avatar: "", //url from AWS
     username: "",
     password: "",
-    id:""
+    currentUser:null
   }
 
   handleAddUser = e => {
@@ -29,7 +30,7 @@ class RegisterModal extends React.Component {
     let user_name= localStorage.getItem("user_name")
     console.log('user '+userId)
     axios.post('http://localhost:3001/user',{userId,user_name})
-    .then(()=>{
+    // .then(()=>{
       console.log(userId,user_name)
       const tokenProvider = new Chatkit.TokenProvider({
         url: 'http://localhost:3001/authenticate',
@@ -39,19 +40,31 @@ class RegisterModal extends React.Component {
         userId,
         tokenProvider
       });
-      return chatManager.connect()
+      chatManager.connect()
       .then(currentUser => {
-        console.log('Successful connection', currentUser)
+        this.setState({
+          currentUser
+        })
+        console.log(this.state.currentUser)
+        console.log('Successful connection')
+        currentUser.joinRoom({ roomId: '20091598' })
+        .then(room => {
+          console.log(`Joined room with ID: ${room.id}`)
+        })
+        .catch(err => {
+          console.log(`Error joining room ${20091598}: ${err}`)
+        })
       })
+        
       .catch(err => {
         console.log('Error on connection', err)
       })
-    })
+      history.push('/Session')
+    // })
   })
+)
   
-    )
-  
-    
+
   }
   handleInputs = event => {
     this.setState({
