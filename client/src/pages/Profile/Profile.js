@@ -9,7 +9,9 @@ class Profile extends Component {
                 <Banner/>
                 
         {/* Drop in profile update here */}
-                
+                <div>
+                    <h1>Profile</h1>
+                </div>
                 <Nav/>
             </div>
         );

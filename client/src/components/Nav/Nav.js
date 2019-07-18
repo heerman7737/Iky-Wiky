@@ -30,7 +30,7 @@ class Nav extends Component {
       pathMap: [
        
         '/Home',
-        '/Sessions',
+        '/Session',
         '/News',
         '/Profile',
         
