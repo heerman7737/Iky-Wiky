@@ -51,13 +51,7 @@
    
 }
 
-.cardContainer{
-    justify-content: center;
-    overflow: scroll;
-    background-color:#b9c0ba;
-    width: 100%;
-    height: 87vh;
-}
+
 
 .intro {
     letter-spacing: 1px;
