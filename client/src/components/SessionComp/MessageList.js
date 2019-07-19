@@ -19,6 +19,7 @@ class MessagesList extends Component {
       },
       message: { fontSize: 15 },
     }
+
     return (
       <div
         style={{
@@ -28,9 +29,10 @@ class MessagesList extends Component {
       >
         <ul style={styles.ul}>
            {this.props.messages.map((message, index) => (
+
              <li key={index} style={styles.li}>
                <div>
-                 <span style={styles.senderUsername}>{message.senderId}</span>{' '}
+                 <span style={styles.senderUsername}>{message.sender.name}</span>{' '}
                </div>
                <p style={styles.message}>{message.text}</p>
              </li>
