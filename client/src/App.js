@@ -11,8 +11,10 @@ const App = _ => {
   const [darkMode , setDarkMode] = React.useState(false)
   
   return(
-    <Router history={history} >
-      <div className={darkMode ? "dark-mode" : "light-mode"}>
+
+    <Router history={history}>
+      <div  className={darkMode ? "dark-mode" : "light-mode"}>
+
         <Route exact path='/' component = { _ => <Login/> }/>
         <Route path='/Home' component = { _ => <Home/> }/>
         <Route path='/Session' component = { _ => <Session/> } />
