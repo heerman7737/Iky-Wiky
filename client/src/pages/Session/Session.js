@@ -4,6 +4,8 @@ import Banner from '../../components/Banner'
 import Chatkit from '@pusher/chatkit-client'
 import MessageList from '../../components/SessionComp/MessageList'
 import SendMessageForm from '../../components/SessionComp/SendMessageForm'
+import TypingIndicator from '../../components/SessionComp/TypingIndicator'
+
 
 class Session extends Component {
 
@@ -13,9 +15,17 @@ class Session extends Component {
     this.state = {
         currentUser: null,
         currentRoom: null,
-        messages: []
+        messages: [],
+        usersWhoAreTyping: [],
     }
     this.sendMessage = this.sendMessage.bind(this)
+    this.sendTypingEvent = this.sendTypingEvent.bind(this)
+  }
+
+  sendTypingEvent() {
+    this.state.currentUser
+      .isTypingIn({ roomId: this.state.currentRoom.id })
+      .catch(error => console.error('error', error))
   }
 
   sendMessage(text) {
@@ -23,13 +33,11 @@ class Session extends Component {
          text,
          roomId: this.state.currentRoom.id,
        })
-       console.log(this.state.currentUser)
-       console.log(this.state.messages)
      }
 
   componentDidMount () {
     let userId= localStorage.getItem("userId")
-
+    let user_name=localStorage.getItem("user_name")
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
       userId,
@@ -48,11 +56,23 @@ class Session extends Component {
             messageLimit: 100,
             hooks: {
                 onMessage: message => {
-                console.log(message)
                 this.setState({
                 messages: [...this.state.messages, message],
             })
           },
+            onUserStartedTyping: user => {
+                 this.setState({
+                   usersWhoAreTyping: [...this.state.usersWhoAreTyping, user.name],
+                })
+               },
+               onUserStoppedTyping: user => {
+                   console.log(user)
+                 this.setState({
+                   usersWhoAreTyping: this.state.usersWhoAreTyping.filter(
+                     username => username !== user.name
+                   ),
+                 })
+               },
         },
       })
       .then(console.log("Working"))
@@ -104,7 +124,11 @@ class Session extends Component {
               messages={this.state.messages}
               style={styles.chatList}
             />     
-             <SendMessageForm onSubmit={this.sendMessage} />
+            <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
+             <SendMessageForm 
+             onSubmit={this.sendMessage} 
+             onChange={this.sendTypingEvent}
+             />
           </section>
         </div>
       </div>
