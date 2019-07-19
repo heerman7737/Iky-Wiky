@@ -13,7 +13,9 @@
    onSubmit(e) {
      e.preventDefault()
      this.props.onSubmit(this.state.text)
+     console.log(this.state.text)
      this.setState({ text: '' })
+    console.log(this.state.text)
    }
 
    onChange(e) {
