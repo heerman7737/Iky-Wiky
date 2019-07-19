@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 class MessagesList extends Component {
   render() {
     const styles = {

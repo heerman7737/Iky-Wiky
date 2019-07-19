@@ -2,22 +2,29 @@ import React, { Component } from 'react'
 import Chatkit from '@pusher/chatkit-client'
 import MessageList from '../../components/SessionComp/MessageList'
 import SendMessageForm from '../../components/SessionComp/SendMessageForm'
-class ChatScreen extends Component {
+class Session extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        currentUser: {},
-        currentRoom: {},
+        currentUser: null,
+        currentRoom: null,
         messages: []
     }
     this.sendMessage = this.sendMessage.bind(this)
   }
+
   sendMessage(text) {
        this.state.currentUser.sendMessage({
          text,
          roomId: this.state.currentRoom.id,
        })
+       console.log(this.state.currentUser)
+       this.setState({
+           messages: [...this.state.messages,{senderId: this.state.currentUser.name, text:text}]
+       })
+       console.log(this.state.messages)
      }
+
   componentDidMount () {
     let userId= localStorage.getItem("userId")
 
@@ -33,8 +40,9 @@ class ChatScreen extends Component {
       .connect()
       .then(currentUser => {
         this.setState({ currentUser })
+        console.log(this.state.currentUser)
         return currentUser.subscribeToRoom({
-            roomId: '20091598',
+            roomId: '20091913',
             messageLimit: 100,
             hooks: {
                 onNewMessage: message => {
@@ -44,9 +52,13 @@ class ChatScreen extends Component {
           },
         },
       })
+      .then(console.log("Working"))
+
+      
     })
           .then(currentRoom => {
                 this.setState({ currentRoom })
+                console.log(this.state.currentRoom)
                })
       .catch(error => console.error('error', error))
   }
@@ -76,7 +88,9 @@ class ChatScreen extends Component {
         flexDirection: 'column',
       },
    }
+   console.log(this.state)
     return (
+        
       <div style={styles.container}>
         <div style={styles.chatContainer}>
           <aside style={styles.whosOnlineListContainer}>
@@ -95,4 +109,4 @@ class ChatScreen extends Component {
   }
 }
 
-export default ChatScreen
+export default Session
