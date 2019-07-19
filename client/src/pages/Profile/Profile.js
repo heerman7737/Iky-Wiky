@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Banner from '../../components/Banner'
+import ProfileBanner from '../../components/ProfileBanner'
 import Nav from '../../components/Nav'
 import './Profile.css'
 class Profile extends Component {
     render() {
         return (
             <div>
-                <Banner/>
+                <ProfileBanner/>
                 
         {/* Drop in profile update here */}
-                <div>
+                <div className="profileContainer">
                     <h1>Profile</h1>
                 </div>
                 <Nav/>

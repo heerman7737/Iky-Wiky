@@ -18,9 +18,7 @@ class Banner extends Component {
                             Babble
                         </Typography>
                  
-                        <div className="toggle-container">
-                        
-                        </div>
+                       
                         
                     </Toolbar>
         
