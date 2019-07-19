@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Banner from '../../components/Banner'
 import Nav from '../../components/Nav'
-import './Profile.css'
-class Profile extends Component {
+import News from '../../components/News'
+import './NewsPage.css'
+
+class NewsPage extends Component {
     render() {
         return (
             <div>
                 <Banner/>
-                
-        {/* Drop in profile update here */}
-                <div>
-                    <h1>Profile</h1>
+                <div className="cardContainer">
+                <News/>
                 </div>
                 <Nav/>
             </div>
@@ -18,4 +18,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default NewsPage;
