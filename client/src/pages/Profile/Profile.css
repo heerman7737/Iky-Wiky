@@ -1,6 +1,8 @@
-.profileForm {
-    display:flex;
+.profileContainer{
     justify-content: center;
-    align-content: center;
+    overflow: scroll;
+    background-color:#b9c0ba;
+    width: 100%;
+    height: 85vh;
 }
 

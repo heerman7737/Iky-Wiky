@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Banner from '../../components/Banner'
+import NewsBanner from '../../components/NewsBanner'
 import Nav from '../../components/Nav'
 import News from '../../components/News'
 import './NewsPage.css'
@@ -8,7 +8,7 @@ class NewsPage extends Component {
     render() {
         return (
             <div>
-                <Banner/>
+                <NewsBanner/>
                 <div className="cardContainer">
                 <News/>
                 </div>

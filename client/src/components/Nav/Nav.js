@@ -62,7 +62,7 @@ class Nav extends Component {
           value={value}
           onChange={this.handleChange}
           showLabels
-          className="nav"
+          className="nav primary"
         >
           <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to={pathMap[0]} />
           <BottomNavigationAction label="Chat" icon={<ChatIcon />} component={Link} to={pathMap[1]} />
