@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import Nav from '../../components/Nav'
+import Banner from '../../components/Banner'
 import Chatkit from '@pusher/chatkit-client'
 import MessageList from '../../components/SessionComp/MessageList'
 import SendMessageForm from '../../components/SessionComp/SendMessageForm'
+
 class ChatScreen extends Component {
   constructor(props) {
     super(props)
@@ -96,3 +99,4 @@ class ChatScreen extends Component {
 }
 
 export default ChatScreen
+
