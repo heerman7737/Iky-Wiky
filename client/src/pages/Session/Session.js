@@ -24,9 +24,6 @@ class Session extends Component {
          roomId: this.state.currentRoom.id,
        })
        console.log(this.state.currentUser)
-       this.setState({
-           messages: [...this.state.messages,{senderId: this.state.currentUser.name, text:text}]
-       })
        console.log(this.state.messages)
      }
 
@@ -50,7 +47,8 @@ class Session extends Component {
             roomId: '20091913',
             messageLimit: 100,
             hooks: {
-                onNewMessage: message => {
+                onMessage: message => {
+                console.log(message)
                 this.setState({
                 messages: [...this.state.messages, message],
             })
