@@ -12,7 +12,6 @@ import { Typography } from '@material-ui/core';
 class News extends Component {
     constructor() {
         super()
-        console.log("constructor runs first")
         this.state = {
             news: []
             
@@ -24,7 +23,6 @@ class News extends Component {
     }
 
     componentDidMount() {
-        console.log('once the component mounts (the render method completes), this function runs')
         Axios.get(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=8644dea7986142a98ccb5fbf2d78ec29`)
             .then(res => {
                 console.log(res)
@@ -49,6 +47,7 @@ class News extends Component {
                                 <CardContent>
                                     <Typography>
                                         {article.description}
+                                        <iframe title="full-article" src={article.url} width="560" height="315" allowfullscreen="allowfullscreen"></iframe>
                                     </Typography>
                                     <Divider />
                                 </CardContent>
