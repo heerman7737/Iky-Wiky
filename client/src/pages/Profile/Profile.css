@@ -1,7 +1,8 @@
-.profileContainer{
+
+.profileContainer {
     justify-content: center;
     overflow: scroll;
-    background-color:#b9c0ba;
+    background-color:#f6faf7;
     width: 100%;
     height: 85vh;
 }
