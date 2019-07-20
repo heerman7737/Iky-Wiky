@@ -11,7 +11,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 
 
-const drawerWidth = 160;
+
+const drawerWidth = '100%';
 
 
 const useStyles = makeStyles(theme => ({
@@ -59,6 +60,7 @@ export default function ChatsDrawer() {
       
       
       <Drawer
+        style={{width: '100%'}}
         className={classes.drawer}
         variant="persistent"
         anchor="right"
@@ -73,14 +75,14 @@ export default function ChatsDrawer() {
           </IconButton>
           </div>
         <Divider />
-        <Typography variant="h5">
+        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#b0d3bf',fontSize: '2.5rem'}}>
           Chat Rooms
       </Typography>
       <Divider />
       <List>
         
           <ListItem >
-             Room1234
+          Chatroom
           </ListItem>
      
       </List>

@@ -1,8 +1,3 @@
-
-
-
-
-
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
@@ -14,11 +9,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
+import Typography from '@material-ui/core/Typography';
+import OutlinedChip from './OutlinedChip'
 
 
-const drawerWidth = 160;
 
-const useStyles = makeStyles((theme: Theme) =>
+const drawerWidth = '100%';
+
+const useStyles = makeStyles(theme =>
   createStyles({
     root: {
       display: 'flex',
@@ -104,6 +102,7 @@ export default function UserDrawer() {
           
     
       <Drawer
+        style={{width: 0}}
         className={classes.drawer}
         variant="persistent"
         anchor="left"
@@ -118,10 +117,15 @@ export default function UserDrawer() {
           </IconButton>
         </div>
         <Divider />
+        <Divider />
+        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#b0d3bf',fontSize: '2.5rem'}}>
+          Current Users
+      </Typography>
+      <Divider />
         <List>
           
             <ListItem>
-              Users
+            <OutlinedChip/>
             </ListItem>
         </List>
        
