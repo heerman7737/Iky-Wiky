@@ -27,6 +27,34 @@ app.post('/user', (req, res) => {
     })
 }
 )
+app.put('/updateUser', (req, res) => {
+  const { userId } = req.body
+  const { user_name } = req.body
+  const { avatar } = req.body
+  const { first_name } = req.body
+  const { last_name } = req.body
+  const { phone } = req.body
+  const { password } = req.body
+  const { email } = req.body
+
+  chatkit.updateUser({
+    id: userId,
+    name: user_name,
+    avatarURL: avatar,
+    customData: {
+      first_name: first_name,
+      last_name: last_name,
+      phone: phone,
+      email: email,
+      password: password
+    }
+  })
+    .then(() => {
+      console.log('User updated successfully')
+    }).catch((err) => {
+      console.log(err)
+    })
+})
 
 app.post('/authenticate', (req, res) => {
   const authData = chatkit.authenticate({

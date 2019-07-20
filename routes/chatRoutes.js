@@ -11,11 +11,11 @@ module.exports = app => {
         username: req.body.username,
         password: req.body.password,
         id: req.body.id
-      }, { upsert: true }, function (error, res) {
+      }, { upsert: true }, function (error, resp) {
         if (error) {
           console.log(error)
         }
-        res.sendStatus(200)
+        res.status(200)
       })
   })
   app.get('/login/:username/:password', (req, res) => {
