@@ -35,25 +35,17 @@ class News extends Component {
    
 
 
-
     render() {
-        // console.log("render runs next, after the constructor")
-        // console.log(this.state)
         return (
             <>
-              
-             
           { this.state.news.map(article => {
-
                    return<Card className="cards">
-                            <Typography variant="h5" >{article.title} 
+                            <Typography variant="h5" key={article}>{article.title} 
                             
-                            {/* {article.publishedAt} */}
-                            {/* {article.urlToImage} */}
+                                    {/* {article.publishedAt} */}
+                                    {/* {article.urlToImage} */}
                             <Divider />
                             </Typography>
-                            
-                                   
                                 <CardContent>
                                     <Typography>
                                         {article.description}
@@ -67,9 +59,7 @@ class News extends Component {
                                         </Badge>
                                     </CardActions>
                             </Card> 
-                    
-                    
-                })}
+                    })}
           
             </>
         )

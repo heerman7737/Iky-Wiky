@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Banner from '../../components/Banner'
+import ProfileBanner from '../../components/ProfileBanner'
 import Nav from '../../components/Nav'
 import './Profile.css'
 import Avatar from '@material-ui/core/Avatar';
@@ -20,7 +20,11 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <Banner/>
+
+                <ProfileBanner/>
+                
+        {/* Drop in profile update here */}
+
                 <div className="profileContainer">
                     <h1>Profile</h1>
                     <Grid container justify="center" alignItems="center" className="Profile">

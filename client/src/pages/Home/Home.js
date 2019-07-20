@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Banner from '../../components/Banner'
 import Nav from '../../components/Nav'
 import Welcome from '../../components/WelcomeContainer'
-import News from '../../components/News'
 import './Home.css'
 
 

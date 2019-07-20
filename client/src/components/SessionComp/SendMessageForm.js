@@ -13,7 +13,9 @@
    onSubmit(e) {
      e.preventDefault()
      this.props.onSubmit(this.state.text)
+     console.log(this.state.text)
      this.setState({ text: '' })
+    console.log(this.state.text)
    }
 
    onChange(e) {
@@ -26,9 +28,8 @@
    render() {
      const styles = {
        container: {
-         padding: 20,
-         borderTop: '1px #4C758F solid',
-         marginBottom: 20,
+         padding: 10,
+         borderTop: '1px #589d62 solid',
        },
        form: {
          display: 'flex',
