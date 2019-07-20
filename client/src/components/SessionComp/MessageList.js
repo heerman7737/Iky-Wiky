@@ -1,46 +1,48 @@
 import React, { Component } from 'react'
+import { ListItemAvatar } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
 
 class MessagesList extends Component {
+ 
   render() {
-    const styles = {
-      container: {
-        overflowY: 'scroll',
-        flex: 1,
-      },
-      ul: {
-        listStyle: 'none',
-      },
-      li: {
-        marginTop: 13,
-        marginBottom: 13,
-      },
-      senderUsername: {
-        fontWeight: 'bold',
-      },
-      message: { fontSize: 15 },
-    }
+  
+    // const fromMe = this.props.fromMe ? 'from-me' : '';
 
     return (
-      <div
-        style={{
-          ...this.props.style,
-          ...styles.container,
-        }}
-      >
-        <ul style={styles.ul}>
+      <div className="chatContainer" >
+    
+        <List >
            {this.props.messages.map((message, index) => (
 
-             <li key={index} style={styles.li}>
-               <div>
-                 <span style={styles.senderUsername}>{message.sender.name}</span>{' '}
-               </div>
-               <p style={styles.message}>{message.text}</p>
-             </li>
+             <ListItem key={index} >
+           
+                 <ListItemAvatar>
+                 <Avatar>
+                    
+                    {message.sender.name}
+                </Avatar>
+                 
+                 
+                 </ListItemAvatar>{' '}
+               
+               <ListItemText className="messages">
+               
+               {message.text}
+               </ListItemText>
+             </ListItem>
            ))}
-         </ul>
+         </List>
+         
        </div>
      )
    }
  }
 
+ MessagesList.defaultProps = {
+  fromMe: false
+};
  export default MessagesList
+

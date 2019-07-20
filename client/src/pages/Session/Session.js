@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import Nav from '../../components/Nav'
-import Banner from '../../components/Banner'
+import SessionBanner from '../../components/SessionBanner'
 import Chatkit from '@pusher/chatkit-client'
 import MessageList from '../../components/SessionComp/MessageList'
 import SendMessageForm from '../../components/SessionComp/SendMessageForm'
 import TypingIndicator from '../../components/SessionComp/TypingIndicator'
+import './Session.css'
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 class Session extends Component {
@@ -87,51 +89,29 @@ class Session extends Component {
   }
 
   render() {
-    const styles = {
-      container: {
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      chatContainer: {
-        display: 'flex',
-        flex: 1,
-      },
-      whosOnlineListContainer: {
-        width: '300px',
-        flex: 'none',
-        padding: 20,
-        backgroundColor: '#2c303b',
-        color: 'white',
-      },
-      chatListContainer: {
-        padding: 20,
-        width: '85%',
-        display: 'flex',
-        flexDirection: 'column',
-      },
-   }
+    
    console.log(this.state)
     return (
         
-      <div style={styles.container}>
-        <div style={styles.chatContainer}>
-          <aside style={styles.whosOnlineListContainer}>
-            <h2>Who's online PLACEHOLDER</h2>
-          </aside>
-          <section style={styles.chatListContainer}>
+     
+        <div >
+          <SessionBanner/>
+          <section >
+            <ScrollToBottom>
           <MessageList
               messages={this.state.messages}
-              style={styles.chatList}
-            />     
+              
+            />  
+            </ScrollToBottom>   
             <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
              <SendMessageForm 
              onSubmit={this.sendMessage} 
              onChange={this.sendTypingEvent}
              />
           </section>
+          <Nav/>
         </div>
-      </div>
+     
     )
   }
 }

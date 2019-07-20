@@ -6,7 +6,7 @@ import Session from './pages/Session'
 import Home from './pages/Home'
 import NewsPage from './pages/NewsPage'
 import history from './utils/history'
-
+import './App.css'
 const App = _ => {
   const [darkMode , setDarkMode] = React.useState(false)
   
