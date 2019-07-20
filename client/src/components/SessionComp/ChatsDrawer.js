@@ -11,6 +11,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 
 
+
 const drawerWidth = '100%';
 
 
@@ -74,14 +75,14 @@ export default function ChatsDrawer() {
           </IconButton>
           </div>
         <Divider />
-        <Typography variant="h5">
+        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#b0d3bf',fontSize: '2.5rem'}}>
           Chat Rooms
       </Typography>
       <Divider />
       <List>
         
           <ListItem >
-             Room1234
+          Chatroom
           </ListItem>
      
       </List>

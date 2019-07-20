@@ -9,6 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
+import Typography from '@material-ui/core/Typography';
+import OutlinedChip from './OutlinedChip'
+
 
 
 const drawerWidth = '100%';
@@ -114,10 +117,15 @@ export default function UserDrawer() {
           </IconButton>
         </div>
         <Divider />
+        <Divider />
+        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#b0d3bf',fontSize: '2.5rem'}}>
+          Current Users
+      </Typography>
+      <Divider />
         <List>
           
             <ListItem>
-              Users
+            <OutlinedChip/>
             </ListItem>
         </List>
        
