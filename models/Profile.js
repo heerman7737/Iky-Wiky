@@ -4,5 +4,6 @@ module.exports = (Schema, model) => model('Profile', new Schema({
   phone: String,
   avatar: String, // url from AWS
   username: String,
-  password: String
+  password: String,
+  _id: String
 }))
