@@ -47,7 +47,7 @@ class News extends Component {
                                 <CardContent>
                                     <Typography>
                                         {article.description}
-                                        <iframe src={article.url} width="560" height="315" allowfullscreen="allowfullscreen"></iframe>
+                                        <iframe title="full-article" src={article.url} width="560" height="315" allowfullscreen="allowfullscreen"></iframe>
                                     </Typography>
                                     <Divider />
                                 </CardContent>
