@@ -27,6 +27,24 @@ app.post('/user', (req, res) => {
     })
 }
 )
+// app.put('/updateUser', (req, res) => {
+//   const {userId} =req.body
+//   const {user_name}=req.body
+//   const {avatar} = req.body
+//   const {first_name}=req.body
+//   const { last_name } = req.body
+//   const {phone}=req.body
+
+//   chatkit.updateUser({
+//     id: userId,
+//     name: user_name,
+//     avatarURL: avatar,
+//     customData:{
+//       first_name:
+//       phone:
+//     }
+//   })
+// })
 
 app.post('/authenticate', (req, res) => {
   const authData = chatkit.authenticate({
