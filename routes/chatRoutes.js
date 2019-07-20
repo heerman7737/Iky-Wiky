@@ -24,8 +24,8 @@ module.exports = app => {
       .catch(error => console.log(error))
   })
 
-  app.put('/profile/:id', (req, res) => {
-    Chat.findOneAndUpdate({ _id: req.body.id },
+  app.put('/updateUser/:id', (req, res) => {
+    Chat.findOneAndUpdate({ id: req.body.id },
       {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -33,11 +33,12 @@ module.exports = app => {
         avatar: req.body.avatar,
         username: req.body.username,
         password: req.body.password
-      }, function (error, res) {
+      }, function (error, resp) {
         if (error) {
           console.log(error)
         }
-        res.sendStatus(200)
+        console.log(resp)
+        res.status(200)
       })
   })
 }
