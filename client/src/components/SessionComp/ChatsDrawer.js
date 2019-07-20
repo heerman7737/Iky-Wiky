@@ -13,25 +13,24 @@ import ListItem from '@material-ui/core/ListItem';
 
 const drawerWidth = 160;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-    drawerHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: '0 8px',
-      ...theme.mixins.toolbar,
-      justifyContent: 'flex-start',
-    },
-  }),
-);
+
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-start',
+  },
+
+}));
 
 export default function ChatsDrawer() {
   const classes = useStyles();
