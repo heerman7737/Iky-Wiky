@@ -34,7 +34,19 @@ export default function OutlinedChip() {
             <FaceIcon />
           </Avatar>
         }
-        label="Clickable Deletable Chip"
+        label="Herman"
+        onClick={handleClick}
+        onDelete={handleDelete}
+        className={classes.chip}
+        variant="outlined"
+      />
+       <Chip
+        avatar={
+          <Avatar>
+            <FaceIcon />
+          </Avatar>
+        }
+        label="Dereck"
         onClick={handleClick}
         onDelete={handleDelete}
         className={classes.chip}

@@ -75,7 +75,11 @@ class Session extends Component {
                    ),
                  })
                },
+               onUserCameOnline: () => this.forceUpdate(),
+               onUserWentOffline: () => this.forceUpdate(),
+               onUserJoined: () => this.forceUpdate(),
         },
+
       })
       .then(console.log("Working"))
 
@@ -95,7 +99,9 @@ class Session extends Component {
         
      
         <div >
-          <SessionBanner/>
+          <SessionBanner
+          
+          />
           <section >
             <ScrollToBottom>
           <MessageList
