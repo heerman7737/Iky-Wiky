@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ProfileBanner from '../../components/ProfileBanner'
 import Nav from '../../components/Nav'
 import './Profile.css'
@@ -17,6 +17,7 @@ import TextField from '@material-ui/core/TextField';
 
 
 class Profile extends Component {
+
     render() {
         return (
             <div>
@@ -63,6 +64,7 @@ class Profile extends Component {
             </div>
         );
     }
+
 }
 
-export default Profile;
+export default Profile
