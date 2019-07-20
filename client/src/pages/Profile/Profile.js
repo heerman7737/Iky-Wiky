@@ -12,6 +12,10 @@ import Lock from '@material-ui/icons/Lock'
 import Phone from '@material-ui/icons/Phone'
 import TextField from '@material-ui/core/TextField'
 import chatUtils from '../../utils/chatUtils.js'
+import axios from 'axios'
+import Chatkit from '@pusher/chatkit-client'
+
+
 
 class Profile extends Component {
 
@@ -68,7 +72,7 @@ class Profile extends Component {
                         .catch(err => {
                             console.log('Error on connection', err)
                         })
-                    history.push('/Session')
+                    // history.push('/Session')
                     // })
                 })
             )
@@ -121,7 +125,7 @@ class Profile extends Component {
           </Grid>
           <Grid container justify='center' alignItems='center' className='PasswordUpdate'>
             <Button variant='contained' color='secondary' className='CancelButt'>Cancel</Button>
-            <Button variant='contained' color='primary' className='SaveButt'>Save</Button>
+                    <Button variant='contained' color='primary' className='SaveButt' onClick={this.handleUpdateUser}>Save</Button>
           </Grid>
         </div>
         <Nav />
