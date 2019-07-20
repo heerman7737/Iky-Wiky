@@ -11,7 +11,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 
 
-const drawerWidth = 160;
+const drawerWidth = '100%';
 
 
 const useStyles = makeStyles(theme => ({
@@ -59,6 +59,7 @@ export default function ChatsDrawer() {
       
       
       <Drawer
+        style={{width: '100%'}}
         className={classes.drawer}
         variant="persistent"
         anchor="right"

@@ -1,8 +1,3 @@
-
-
-
-
-
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
@@ -16,9 +11,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 
 
-const drawerWidth = 160;
+const drawerWidth = '100%';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
     root: {
       display: 'flex',
@@ -104,6 +99,7 @@ export default function UserDrawer() {
           
     
       <Drawer
+        style={{width: 0}}
         className={classes.drawer}
         variant="persistent"
         anchor="left"
