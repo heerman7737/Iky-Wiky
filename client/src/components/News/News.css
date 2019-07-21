@@ -5,3 +5,43 @@
  margin:15px;
  padding:20px;
 }
+
+.dialogStyles {
+    width: 505px;
+    max-width: 100%;
+    margin:0 auto ;
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);
+    z-index: 999;
+    background-color: #eee;
+    padding: 10px, 20px, 40px ;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    display:flex;
+    flex-direction: column;
+}
+
+.buttonStyle {
+    margin:5px;
+    padding:0 10px;
+    cursor:pointer;
+    border-radius:50%;
+    border:none;
+    width:30px;
+    height:30px;
+    font-weight:bold;
+    align-self:flex-end;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+}
