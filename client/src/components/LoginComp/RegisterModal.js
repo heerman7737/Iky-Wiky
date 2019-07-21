@@ -47,12 +47,12 @@ class RegisterModal extends React.Component {
         })
         console.log(this.state.currentUser)
         console.log('Successful connection')
-        currentUser.joinRoom({ roomId: '20091913' })
+        currentUser.joinRoom({ roomId: '20092547' })
         .then(room => {
           console.log(`Joined room with ID: ${room.id}`)
         })
         .catch(err => {
-          console.log(`Error joining room ${20091913}: ${err}`)
+          console.log(`Error joining room ${20092547}: ${err}`)
         })
       })
         

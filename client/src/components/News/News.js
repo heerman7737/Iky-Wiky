@@ -7,14 +7,15 @@ import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
-import { Typography } from '@material-ui/core';
+import { Typography} from '@material-ui/core';
+import Dialog from './Dialog'
 
 class News extends Component {
     constructor() {
         super()
         this.state = {
-            news: []
-            
+            news: [],
+            isOpen: false
         }
     }
 
@@ -47,15 +48,19 @@ class News extends Component {
                                 <CardContent>
                                     <Typography>
                                         {article.description}
-                                        <iframe title="full-article" src={article.url} width="560" height="315" allowfullscreen="allowfullscreen"></iframe>
                                     </Typography>
                                     <Divider />
                                 </CardContent>
                                     <CardActions>
-                                        <Button size="small" variant="outlined" color="inherit" >Read More</Button>
+                                        <Button size="small" variant="outlined" color="inherit" onClick={(e) => this.setState({ isOpen:true })}>Read More</Button>
+                                        <Dialog isOpen={this.state.isOpen}
+                                        onClose={(e) => this.setState({ isOpen:false })}>
+                                        <iframe title="full-article" src={article.url} width="500" height="400" allowfullscreen="allowfullscreen"></iframe>
+                                        </Dialog>
                                         <Badge color="secondary" badgeContent={8} >
                                            <Button size="small" variant="outlined" color="secondary">Fake News</Button>
                                         </Badge>
+                                        
                                     </CardActions>
                             </Card> 
                     })}

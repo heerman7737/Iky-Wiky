@@ -54,7 +54,7 @@ class Session extends Component {
         this.setState({ currentUser })
         console.log(this.state.currentUser)
         return currentUser.subscribeToRoom({
-            roomId: '20091913',
+            roomId: '20092547',
             messageLimit: 100,
             hooks: {
                 onMessage: message => {
