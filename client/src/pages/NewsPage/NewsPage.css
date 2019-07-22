@@ -1,7 +1,7 @@
 .cardContainer{
     justify-content: center;
     overflow: scroll;
-    background-color:#b9c0ba;
+    background-image: linear-gradient( #525855, #b9c0ba);
     width: 100%;
     height: 85vh;
 }
