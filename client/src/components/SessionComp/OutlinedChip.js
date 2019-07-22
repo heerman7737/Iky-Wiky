@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -15,32 +15,56 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function OutlinedChip() {
-  const classes = useStyles();
+class OutlinedChipItem extends Component{
 
-  function handleDelete() {
-    alert('You clicked the delete icon.');
+  render(){
+    return(
+      <>
+      <ul>
+        <button onClick={this.props.onClick}>{this.props.children}</button>
+        </ul>
+      </>
+    )
   }
-
-  function handleClick() {
-    alert('You clicked the Chip.');
-  }
-
-  return (
-    <div className={classes.root}>
-      <Chip
-        avatar={
-          <Avatar>
-            <FaceIcon />
-          </Avatar>
-        }
-        label="Clickable Deletable Chip"
-        onClick={handleClick}
-        onDelete={handleDelete}
-        className={classes.chip}
-        variant="outlined"
-      />
-    </div>
-  )
 }
 
+class OutlinedChip extends Component{
+  handleClick=e=>{
+    e.preventDefault()
+
+    console.log(this.props.currentUser)
+    // console.log(e.target.value)
+    this.props.currentUser.createRoom({
+      name: "Imperium",
+      private:true,
+      addUserIds:['admin']
+    })
+  }
+
+    render(){
+      return(
+        <>
+        {
+        
+          this.props.users.map((user,index)=>{
+            if(user.id===this.props.currentUser.id){
+              return(
+                <OutlinedChipItem key={index} presenceState="online" onClick={this.handleClick}>
+                  {user.name} (You)
+                </OutlinedChipItem>
+              )
+            }
+            return(
+              <OutlinedChipItem key={index} presenceState={user.presence.state} onClick={this.handleClick} value={user.name}>
+              {user.name}
+            </OutlinedChipItem>
+            )
+          })
+        }
+      </>
+      )
+    }
+}
+
+
+export default OutlinedChip
