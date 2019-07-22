@@ -9,7 +9,7 @@ import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-
+import RoomList from './RoomList'
 
 
 const drawerWidth = '100%';
@@ -33,11 +33,19 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function ChatsDrawer() {
+export default function ChatsDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  function createGroupChat(e){
+    e.preventDefault()
+    props.currentUser.createRoom({
+      name:"BabyOneMoreTime",
+      private:false,
+      addUserIds:['admin','Baby']
+    })
+  }
   function handleDrawerOpen() {
     setOpen(true);
   }
@@ -82,10 +90,14 @@ export default function ChatsDrawer() {
       <List>
         
           <ListItem >
-          Chatroom
+            <RoomList
+              currentUser={props.currentUser}
+              rooms={props.rooms}
+            />
           </ListItem>
      
       </List>
+      <button onClick={createGroupChat}>Create group chat</button>
       </Drawer>
     </div>
   );

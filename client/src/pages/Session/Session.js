@@ -19,6 +19,9 @@ class Session extends Component {
         currentRoom: null,
         messages: [],
         usersWhoAreTyping: [],
+        users:[],
+        rooms:[]
+
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.sendTypingEvent = this.sendTypingEvent.bind(this)
@@ -39,7 +42,6 @@ class Session extends Component {
 
   componentDidMount () {
     let userId= localStorage.getItem("userId")
-    let user_name=localStorage.getItem("user_name")
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
       userId,
@@ -52,9 +54,10 @@ class Session extends Component {
       .connect()
       .then(currentUser => {
         this.setState({ currentUser })
+        this.setState({rooms:currentUser.rooms})
         console.log(this.state.currentUser)
         return currentUser.subscribeToRoom({
-            roomId: '20091913',
+            roomId: '20092547',
             messageLimit: 100,
             hooks: {
                 onMessage: message => {
@@ -87,20 +90,19 @@ class Session extends Component {
     })
           .then(currentRoom => {
                 this.setState({ currentRoom })
-                console.log(this.state.currentRoom)
+                this.setState({users:currentRoom.users})
                })
       .catch(error => console.error('error', error))
   }
 
   render() {
-    
-   console.log(this.state)
+
     return (
-        
-     
         <div >
           <SessionBanner
-          
+            currentUser={this.state.currentUser}
+            users={this.state.users}
+            rooms={this.state.rooms}
           />
           <section >
             <ScrollToBottom>

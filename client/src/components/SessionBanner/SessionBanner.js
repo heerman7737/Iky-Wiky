@@ -16,11 +16,17 @@ class SessionBanner extends Component {
              
                 <AppBar position="static" >
                     <Toolbar className="Tools">
-                    <UserDrawer/>
+                    <UserDrawer
+                        currentUser={this.props.currentUser}
+                        users={this.props.users}
+                    />
                         <Typography variant="h4" className="Logo">
                             Chats
                         </Typography>
-                    <ChatsDrawer/>
+                    <ChatsDrawer
+                        currentUser={this.props.currentUser}
+                        rooms={this.props.rooms}
+                    />
                        
                         
                     </Toolbar>
