@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 import { Typography} from '@material-ui/core';
 import Dialog from './Dialog'
+import Slide from '@material-ui/core/Slide';
 // import { throws } from 'assert';
 
 class News extends Component {
@@ -74,12 +75,14 @@ class News extends Component {
                     
                     })}
             {news[articleIndex] &&
+           
             <Dialog 
                 isOpen={this.state.isOpen}
                 onClose={(e) => this.setState({ isOpen:false })}>
+                <iframe title="full-article" src={news[articleIndex].url} width="500px" height="480px" allowfullscreen="allowfullscreen"></iframe>
                 <a href={news[articleIndex].url}>Go to Article Website</a>
-                <iframe title="full-article" src={news[articleIndex].url} width="500" height="400" allowfullscreen="allowfullscreen"></iframe>
             </Dialog>
+            
             }
           
             </>

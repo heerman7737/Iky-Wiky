@@ -10,6 +10,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import RoomList from './RoomList'
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 
 const drawerWidth = '100%';
@@ -29,6 +31,16 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
+  },
+  btn: {
+    background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)',
+    border: 0,
+    borderRadius: 3,
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    margin:'10px',
+    // marginBottom:'5px'
   },
 
 }));
@@ -87,18 +99,22 @@ export default function ChatsDrawer(props) {
           Chat Rooms
       </Typography>
       <Divider />
-      <List>
-        
-          <ListItem >
+  
             <RoomList
               currentUser={props.currentUser}
               rooms={props.rooms}
               action={props.action}
             />
-          </ListItem>
-     
-      </List>
-      <button onClick={createGroupChat}>Create group chat</button>
+
+         <Divider/>
+      <Fab 
+      variant="extended"
+      size="medium"
+      color="primary"
+      onClick={createGroupChat}
+      className={classes.btn}
+      >Create group chat
+      </Fab>
       </Drawer>
     </div>
   );

@@ -123,16 +123,12 @@ export default function UserDrawer(props) {
           Current Users
       </Typography>
       <Divider />
-        <List>
           
-            <ListItem>
-            <OutlinedChip
+            <OutlinedChip 
                 currentUser={props.currentUser}
                 users={props.users}
             />
-            </ListItem>
-        </List>
-       
+           
       </Drawer>
    
     </div>
