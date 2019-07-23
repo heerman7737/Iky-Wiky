@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import  UserDrawer from '../SessionComp/UsersDrawer';
 import ChatsDrawer from '../SessionComp/ChatsDrawer';
+import { timingSafeEqual } from 'crypto';
 
 
 
@@ -26,6 +27,7 @@ class SessionBanner extends Component {
                     <ChatsDrawer
                         currentUser={this.props.currentUser}
                         rooms={this.props.rooms}
+                        action={this.props.action}
                     />
                        
                         

@@ -93,6 +93,7 @@ export default function ChatsDrawer(props) {
             <RoomList
               currentUser={props.currentUser}
               rooms={props.rooms}
+              action={props.action}
             />
           </ListItem>
      

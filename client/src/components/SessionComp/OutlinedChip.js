@@ -21,7 +21,7 @@ class OutlinedChipItem extends Component{
     return(
       <>
       <ul>
-        <button onClick={this.props.onClick}>{this.props.children}</button>
+        <button name={this.props.name} id={this.props.id} onClick={this.props.onClick}>{this.props.children}</button>
         </ul>
       </>
     )
@@ -29,33 +29,38 @@ class OutlinedChipItem extends Component{
 }
 
 class OutlinedChip extends Component{
+
   handleClick=e=>{
     e.preventDefault()
 
-    console.log(this.props.currentUser)
-    // console.log(e.target.value)
+    // console.log(e.target.id)
+   
+   
     this.props.currentUser.createRoom({
-      name: "Imperium",
+      name: `${e.target.name}`,
       private:true,
-      addUserIds:['admin']
+      addUserIds:[`${e.target.id}`]
     })
+   
   }
 
     render(){
       return(
+
         <>
         {
         
           this.props.users.map((user,index)=>{
+
             if(user.id===this.props.currentUser.id){
               return(
-                <OutlinedChipItem key={index} presenceState="online" onClick={this.handleClick}>
+                <OutlinedChipItem name={user.name} id={user.id} key={index} presenceState="online" onClick={this.handleClick}>
                   {user.name} (You)
                 </OutlinedChipItem>
               )
             }
             return(
-              <OutlinedChipItem key={index} presenceState={user.presence.state} onClick={this.handleClick} value={user.name}>
+              <OutlinedChipItem name={user.name} id={user.id} key={index} presenceState={user.presence.state} onClick={this.handleClick} value={user.name}>
               {user.name}
             </OutlinedChipItem>
             )
