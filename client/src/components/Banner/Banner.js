@@ -5,27 +5,26 @@ import Typography from '@material-ui/core/Typography';
 import './Banner.css'
 
 
-class Banner extends Component {
-    render() {
-       
-        return (
-    
+const Banner = props => {
+    return (
+
+            <AppBar position="static" id="AppBar">
+                <Toolbar className="Tools">
+               
+                    <Typography variant="h4" className="Logo">
+                        Babble
+                    </Typography>
              
-                <AppBar position="static" id="AppBar">
-                    <Toolbar className="Tools">
-                   
-                        <Typography variant="h4" className="Logo">
-                            Babble
-                        </Typography>
-                 
-                       
-                        
-                    </Toolbar>
-        
-                </AppBar>
-           
-        );
-    }
+                    <div className="toggle-container">
+                        <div class="sun">☀</div>
+                    <input type="checkbox" id="switch" name="theme" onClick={() => props.darkModeToggle(previousMode => !previousMode)} /><label id="switch" htmlFor="switch">Toggle</label>
+                    <div class="moon">☾</div>
+                    </div>
+                </Toolbar>
+    
+            </AppBar>
+       
+    );
 }
 
 export default Banner;
