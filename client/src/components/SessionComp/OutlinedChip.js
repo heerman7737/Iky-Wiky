@@ -20,27 +20,20 @@ const useStyles = makeStyles(theme => ({
 class OutlinedChipItem extends Component{
 
   render(){
+    
     return(
-      <>
-      <List style={{marginLeft:'10px' , overflowY: 'auto'}}>
-        <ListItem>
-        <Chip 
-        avatar={
-          <Avatar>
-            <FaceIcon />
-          </Avatar>
-        }
-        
-        // {<Avatar>{this.props.avatar}</Avatar>}
+      
+      <li>
+        <button     
         name={this.props.name} 
         id={this.props.id} 
         onClick={this.props.onClick}
-        label={this.props.children}
-        variant="outlined"
-        />
-        </ListItem>
-      </List>
-      </>
+        variant="outlined">
+
+        {this.props.children}
+        </button>
+
+      </li>
     )
   }
 }
@@ -50,8 +43,8 @@ class OutlinedChip extends Component{
   handleClick=e=>{
     e.preventDefault()
 
-    // console.log(e.target.id)
-   
+    console.log(e.target.id)
+    console.log(e.target.name)
    
     this.props.currentUser.createRoom({
       name: `${e.target.name}`,

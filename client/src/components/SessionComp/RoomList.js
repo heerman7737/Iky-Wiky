@@ -6,13 +6,12 @@ class RoomListItem extends Component{
     render(){
         return(
             
-                <Chip 
+                <li 
                 onClick={this.props.onClick} 
                 id={this.props.id}
-                label={this.props.children}
                 variant="outlined">
                 
-                </Chip>
+                {this.props.name}</li>
             
         )
     }
@@ -29,10 +28,11 @@ class RoomList extends Component{
                     return(
                     <ListItem>
                     <RoomListItem 
+                    name= {room.name}
                     id={room.id} 
                     onClick={this.props.action} 
                     key={index}>
-                    {room.name}
+      
                     </RoomListItem>
                     </ListItem>
                     )
