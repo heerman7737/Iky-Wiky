@@ -84,7 +84,7 @@ class News extends Component {
                 src={news[articleIndex].url} width="500px" 
                 height="525px" allowfullscreen="allowfullscreen"></iframe>
                 <Button 
-                style={{background:'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)' , marginTop:"3px"}} 
+                style={{background:'linear-gradient(45deg, #eee 30%, #B0D3BF 90%)' , marginTop:"3px"}} 
                 href={news[articleIndex].url}>Go to Article Website</Button>
             </Dialog>
             
