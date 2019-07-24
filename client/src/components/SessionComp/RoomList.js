@@ -6,10 +6,17 @@ class RoomListItem extends Component{
     render(){
         return(
             
-                <li 
+                <li style={{
+                    position:"relative",
+                    paddingTop:"10px",
+                    paddingLeft:"10px",
+                    background:"#b0d3bf",
+                    height:"30px", 
+                    width:"150px", borderRadius:"8px", marginTop:'5px' , fontWeight:'bold', fontSize:"18px", color:"white"
+                }}
                 onClick={this.props.onClick} 
                 id={this.props.id}
-                variant="outlined">
+               >
                 
                 {this.props.name}</li>
             
@@ -26,7 +33,7 @@ class RoomList extends Component{
             {
                 this.props.rooms.map((room,index)=>{
                     return(
-                    <ListItem>
+                    <ListItem >
                     <RoomListItem 
                     name= {room.name}
                     id={room.id} 
