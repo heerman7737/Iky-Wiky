@@ -12,7 +12,9 @@ import Dialog from './Dialog'
 import Slide from '@material-ui/core/Slide';
 // import { throws } from 'assert';
 
+
 class News extends Component {
+    
     constructor() {
         super()
         this.state = {
@@ -43,7 +45,6 @@ class News extends Component {
    
     render() {
         const { news, articleIndex } = this.state
-
         // console.log(this.state.news)
         return (
             <>
@@ -79,8 +80,12 @@ class News extends Component {
             <Dialog 
                 isOpen={this.state.isOpen}
                 onClose={(e) => this.setState({ isOpen:false })}>
-                <iframe title="full-article" src={news[articleIndex].url} width="500px" height="480px" allowfullscreen="allowfullscreen"></iframe>
-                <a href={news[articleIndex].url}>Go to Article Website</a>
+                <iframe title="full-article" 
+                src={news[articleIndex].url} width="500px" 
+                height="525px" allowfullscreen="allowfullscreen"></iframe>
+                <Button 
+                style={{background:'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)' , marginTop:"3px"}} 
+                href={news[articleIndex].url}>Go to Article Website</Button>
             </Dialog>
             
             }

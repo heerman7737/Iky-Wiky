@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
 import FaceIcon from '@material-ui/icons/Face';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
