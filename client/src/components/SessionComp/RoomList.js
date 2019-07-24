@@ -12,7 +12,7 @@ class RoomListItem extends Component{
                     paddingLeft:"10px",
                     background:"#b0d3bf",
                     height:"30px", 
-                    width:"150px", borderRadius:"8px", marginTop:'5px' , fontWeight:'bold', fontSize:"18px", color:"white"
+                    width:"150px", borderRadius:"8px", marginTop:'2px' , fontWeight:'bold', fontSize:"18px", color:"white"
                 }}
                 onClick={this.props.onClick} 
                 id={this.props.id}

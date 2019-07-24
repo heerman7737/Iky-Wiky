@@ -31,17 +31,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
-  },
-  btn: {
-    background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)',
-    border: 0,
-    borderRadius: 3,
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-    margin:'10px',
-    // marginBottom:'5px'
-  },
+  }
 
 }));
 
@@ -49,15 +39,8 @@ export default function ChatsDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  
 
-  function createGroupChat(e){
-    e.preventDefault()
-    props.currentUser.createRoom({
-      name:"BabyOneMoreTime",
-      private:false,
-      addUserIds:['admin','Baby']
-    })
-  }
   function handleDrawerOpen() {
     setOpen(true);
   }
@@ -65,7 +48,7 @@ export default function ChatsDrawer(props) {
   function handleDrawerClose() {
     setOpen(false);
   }
-
+ 
   return (
     <div >
       
@@ -107,16 +90,58 @@ export default function ChatsDrawer(props) {
             />
 
          <Divider/>
-      <Fab 
-      variant="extended"
-      size="medium"
-      color="primary"
-      onClick={createGroupChat}
-      className={classes.btn}
-      >Create group chat
-      </Fab>
+      <GroupChatForm
+      currentUser={props.currentUser}
+      />
       </Drawer>
     </div>
   );
 }
 
+class GroupChatForm extends React.Component{
+  state={
+    roomName:null
+  }
+
+  createGroupChat=e=>{
+    e.preventDefault();
+    if (this.state.roomName === null) {
+      alert("Please Enter Chatroom Name!");
+    } else {
+    this.props.currentUser.createRoom({
+      name:`${this.state.roomName}`,
+      private:false,
+      addUserIds:['admin','Baby']
+    })
+  };
+  }
+  handleChange=e=>{
+    e.preventDefault()
+    console.log(e.target.value)
+    this.setState({roomName:e.target.value})
+    console.log(this.state.roomName)
+  }
+  render(){
+    return(
+      <>
+    <form style={{ justifyItems:"center"}}>
+         <input
+               type="text"
+               id="roomName"
+               placeholder="Enter room name here"
+               onChange={this.handleChange}
+               style={{width:'100%' , height:'40%' , fontSize:'16px' ,  }}
+               
+             />
+      <Fab 
+      variant="extended"
+      style={{background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)', color:'white' , width:'100%' , fontWeight:'bold' , marginTop:'2px'}}
+      onClick={this.createGroupChat}
+
+      >Create group chat
+      </Fab>
+      </form>
+      </>
+    )
+  }
+}
