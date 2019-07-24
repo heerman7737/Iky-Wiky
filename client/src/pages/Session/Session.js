@@ -64,13 +64,13 @@ changingRoom(e){
           messageLimit: 100
         })
         .then(currentRoom=>{
-          console.log(currentRoom)
+          // console.log(currentRoom)
           this.setState({currentRoom})
           console.log(this.state.currentRoom)
         })
 
   }
-  componentDidMount () {
+  componentWillMount () {
     let userId= localStorage.getItem("userId")
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
@@ -82,7 +82,6 @@ changingRoom(e){
 
     chatManager
       .connect({onAddedToRoom:room=>{
-        console.log(room)
        this.setState({
          rooms:[...this.state.rooms,room]
        })
@@ -143,6 +142,7 @@ changingRoom(e){
             users={this.state.users}
             rooms={this.state.rooms}
             action={this.changingRoom}
+            currentRoom={this.state.currentRoom}
           />
           <section >
             <ScrollToBottom>

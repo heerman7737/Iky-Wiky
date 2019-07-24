@@ -1,10 +1,6 @@
 import React,{Component} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Chip from '@material-ui/core/Chip';
-import FaceIcon from '@material-ui/icons/Face';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,18 +35,26 @@ class OutlinedChipItem extends Component{
 }
 
 class OutlinedChip extends Component{
+  state={
+    room:null
+  }
 
   handleClick=e=>{
     e.preventDefault()
 
     console.log(e.target.id)
     console.log(e.target.name)
-   
+    console.log(this.props.currentUser)
     this.props.currentUser.createRoom({
       name: `${e.target.name}`,
       private:true,
       addUserIds:[`${e.target.id}`]
     })
+    .then(room=>{
+      this.setState({room})
+      console.log(this.state.room)
+    })
+
    
   }
 
