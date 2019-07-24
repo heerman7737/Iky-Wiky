@@ -32,7 +32,14 @@ class Profile extends Component {
     handleUpdateUser = e => {
         e.preventDefault()
         console.log(this.state)
-        chatUtils.updateUser(this.state)
+        chatUtils.updateUser(this.state.id, {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          phone: this.state.phone,
+          avatar: this.state.avatar,
+          username: this.state.username,
+          password: this.state.password
+        })
             .then(chatUtils.login(this.state.username, this.state.password)
                 .then((data) => {
                     localStorage.setItem("userId", data.data[0]._id)
@@ -80,9 +87,9 @@ class Profile extends Component {
 
     }
     handleInputs = event => {
-        this.setState({
-            [event.target.id]: event.target.value
-        })
+      this.setState({
+        [event.target.name]: event.target.value
+      })
     }
 
 
@@ -103,54 +110,28 @@ class Profile extends Component {
             <h4>UserName</h4>
           </Grid>
           <br />
-          <Grid container justify='center' alignItems='center' className='input' >
-            <TextField 
-            id='input-with-icon-grid first_name' 
-            label='Type in Name' 
-            InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Face />
-                  </InputAdornment>
-                ),
-              }}/>
+          <Grid container justify='center' alignItems='center' className='UseName'>
+            <Face />
+            <h4>Name: </h4>
+            <TextField onChange={this.handleInputs} name='first_name' id='input-with-icon-grid' label='First Name' />
+            <TextField onChange={this.handleInputs} name='last_name' id='input-with-icon-grid' label='Last Name' />
           </Grid>
-          <Grid container justify='center' alignItems='center' className='input'>
-            <TextField 
-            id='input-with-icon-grid email' 
-            label='Email'
-            InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Email />
-                  </InputAdornment>
-                ),
-              }} />
+          <Grid container justify='center' alignItems='center' className='EmailUpdate'>
+            <Email />
+            <h4>Email: </h4>
+            <TextField onChange={this.handleInputs} name='email' id='input-with-icon-grid email' label='Email' />
           </Grid>
-          <Grid container justify='center' alignItems='center' className='input'>
-            <TextField 
-            id='input-with-icon-grid phone' 
-            label='Phone Number'
-            InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Phone />
-                  </InputAdornment>
-                ),
-              }} 
-            />
+          <Grid container justify='center' alignItems='center' className='PhoneUpdate'>
+            <Phone />
+            <h4>Phone: </h4>
+            <TextField onChange={this.handleInputs} name='phone' id='input-with-icon-grid phone' label='Phone Number' />
           </Grid>
-          <Grid container justify='center' alignItems='center' className='input'>
-            <TextField 
-            id='input-with-icon-grid password' 
-            label='Password'
-            InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Lock />
-                  </InputAdornment>
-                ),
-              }} />
+          <Grid container justify='center' alignItems='center' className='PasswordUpdate'>
+            <Lock />
+            <h4>Password:</h4>
+            <TextField onChange={this.handleInputs} name='password' id='input-with-icon-grid password' label='Password' />
+
+  
           </Grid>
           <Grid container justify='center' alignItems='center' className='Update'>
             <Button variant="outlined" color="inherit" className='SaveButt' onClick={this.handleUpdateUser}>Update</Button>
