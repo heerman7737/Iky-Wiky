@@ -20,7 +20,7 @@ const App = _ => {
   }
 
   return (
-    <div className={darkMode ? 'dark-mode' : 'light-mode'}>
+    <div className={darkMode ?  'light-mode' : 'dark-mode' }>
       <Router history={history}>
         <Route exact path='/' component={_ => <Login />} />
         <Route path='/Home' render={props => <Home darkModeToggle={setDarkMode} />} />
@@ -30,6 +30,6 @@ const App = _ => {
     </Router>
       </div>
   )
-}
+  }
 
 export default App 
