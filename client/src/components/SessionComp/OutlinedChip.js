@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 
 
@@ -25,18 +27,26 @@ class OutlinedChipItem extends Component{
 }
 
 class OutlinedChip extends Component{
+  state={
+    room:null
+  }
 
   handleClick=e=>{
     e.preventDefault()
 
     console.log(e.target.id)
     console.log(e.target.name)
-   
+    console.log(this.props.currentUser)
     this.props.currentUser.createRoom({
       name: `${e.target.name}`,
       private:true,
       addUserIds:[`${e.target.id}`]
     })
+    .then(room=>{
+      this.setState({room})
+      console.log(this.state.room)
+    })
+
    
   }
 

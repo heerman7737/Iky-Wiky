@@ -4,14 +4,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import  UserDrawer from '../SessionComp/UsersDrawer';
 import ChatsDrawer from '../SessionComp/ChatsDrawer';
-import { timingSafeEqual } from 'crypto';
 
 
 
 
 class SessionBanner extends Component {
     render() {
-        
         return (
     
              
@@ -21,9 +19,11 @@ class SessionBanner extends Component {
                         currentUser={this.props.currentUser}
                         users={this.props.users}
                     />
-                        <Typography variant="h4" className="Logo">
-                            Chats
-                        </Typography>
+                    {this.props.currentRoom ?
+                        <Typography variant="h4" className="Logo" >
+                            {this.props.currentRoom.name}
+                        </Typography> : <img style={{height:'80px'}} src="https://ui-ex.com/images/background-transparent-loading-3.gif" />
+                    }
                     <ChatsDrawer
                         currentUser={this.props.currentUser}
                         rooms={this.props.rooms}
