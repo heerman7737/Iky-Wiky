@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import  UserDrawer from '../SessionComp/UsersDrawer';
 import ChatsDrawer from '../SessionComp/ChatsDrawer';
+import { timingSafeEqual } from 'crypto';
 
 
 
@@ -16,11 +17,18 @@ class SessionBanner extends Component {
              
                 <AppBar position="static" >
                     <Toolbar className="Tools">
-                    <UserDrawer/>
+                    <UserDrawer
+                        currentUser={this.props.currentUser}
+                        users={this.props.users}
+                    />
                         <Typography variant="h4" className="Logo">
                             Chats
                         </Typography>
-                    <ChatsDrawer/>
+                    <ChatsDrawer
+                        currentUser={this.props.currentUser}
+                        rooms={this.props.rooms}
+                        action={this.props.action}
+                    />
                        
                         
                     </Toolbar>

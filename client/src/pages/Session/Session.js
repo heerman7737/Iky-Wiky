@@ -19,9 +19,13 @@ class Session extends Component {
         currentRoom: null,
         messages: [],
         usersWhoAreTyping: [],
+        users:[],
+        rooms:[]
+
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.sendTypingEvent = this.sendTypingEvent.bind(this)
+    this.changingRoom=this.changingRoom.bind(this)
   }
 
   sendTypingEvent() {
@@ -36,10 +40,38 @@ class Session extends Component {
          roomId: this.state.currentRoom.id,
        })
      }
+  
+changingRoom(e){
+      e.preventDefault()
+      console.log("Working")
+      console.log(`${e.target.id}`)
+      // console.log(this.state.messages)
+      this.setState({messages:[]})
+      // this.setState({currentRoom:e.target.id})
+      // console.log(this.state.currentRoom)
+      // console.log(this.state.messages)
+      return  this.state.currentUser.subscribeToRoom({
+          roomId: `${e.target.id}`,
+          hooks: {
+            onMessage: message => {
+              this.setState({
+                  messages:[...this.state.messages,message]
+              })
+              console.log(this.state.messages)
+              console.log(message)
+            }
+          },
+          messageLimit: 100
+        })
+        .then(currentRoom=>{
+          console.log(currentRoom)
+          this.setState({currentRoom})
+          console.log(this.state.currentRoom)
+        })
 
+  }
   componentDidMount () {
     let userId= localStorage.getItem("userId")
-    let user_name=localStorage.getItem("user_name")
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
       userId,
@@ -49,10 +81,19 @@ class Session extends Component {
     })
 
     chatManager
-      .connect()
+      .connect({onAddedToRoom:room=>{
+        console.log(room)
+       this.setState({
+         rooms:[...this.state.rooms,room]
+       })
+     }})
       .then(currentUser => {
         this.setState({ currentUser })
+        this.setState({rooms:currentUser.rooms})
         console.log(this.state.currentUser)
+        this.setState({
+          messages:[]
+        })
         return currentUser.subscribeToRoom({
             roomId: '20092547',
             messageLimit: 100,
@@ -75,7 +116,12 @@ class Session extends Component {
                    ),
                  })
                },
+               onUserCameOnline: () => this.forceUpdate(),
+               onUserWentOffline: () => this.forceUpdate(),
+               onUserJoined: () => this.forceUpdate(),
         },
+
+
       })
       .then(console.log("Working"))
 
@@ -83,19 +129,21 @@ class Session extends Component {
     })
           .then(currentRoom => {
                 this.setState({ currentRoom })
-                console.log(this.state.currentRoom)
+                this.setState({users:currentRoom.users})
                })
       .catch(error => console.error('error', error))
   }
 
   render() {
-    
-   console.log(this.state)
+
     return (
-        
-     
         <div >
-          <SessionBanner/>
+          <SessionBanner
+            currentUser={this.state.currentUser}
+            users={this.state.users}
+            rooms={this.state.rooms}
+            action={this.changingRoom}
+          />
           <section >
             <ScrollToBottom>
           <MessageList

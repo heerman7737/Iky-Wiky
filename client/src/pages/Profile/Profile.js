@@ -14,8 +14,8 @@ import TextField from '@material-ui/core/TextField'
 import chatUtils from '../../utils/chatUtils.js'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
-
-
+import InputAdornment from '@material-ui/core/InputAdornment';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 class Profile extends Component {
 
@@ -101,13 +101,13 @@ class Profile extends Component {
 
         {/* Drop in profile update here */}
 
-        <div className='profileContainer'>
-          <h1>Profile</h1>
-          <Grid container justify='center' alignItems='center' className='Profile'>
+        <div className='profileContainer' >
+          
+          <Grid container justify='center' alignItems='center' className='Profile' >
             <Avatar alt='Remy Sharp' src='https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' className='Profilepic' />
           </Grid>
           <Grid container justify='center' alignItems='center' className='Name'>
-            <h4>UserNameWhatEver</h4>
+            <h4>UserName</h4>
           </Grid>
           <br />
           <Grid container justify='center' alignItems='center' className='UseName'>
@@ -130,10 +130,12 @@ class Profile extends Component {
             <Lock />
             <h4>Password:</h4>
             <TextField onChange={this.handleInputs} name='password' id='input-with-icon-grid password' label='Password' />
+
+  
           </Grid>
-          <Grid container justify='center' alignItems='center' className='PasswordUpdate'>
-            <Button variant='contained' color='secondary' className='CancelButt'>Cancel</Button>
-                    <Button variant='contained' color='primary' className='SaveButt' onClick={this.handleUpdateUser}>Save</Button>
+          <Grid container justify='center' alignItems='center' className='Update'>
+            <Button variant="outlined" color="inherit" className='SaveButt' onClick={this.handleUpdateUser}>Update</Button>
+            <Button variant="outlined" color="secondary" className='CancelButt'>Cancel</Button>
           </Grid>
         </div>
         <Nav />

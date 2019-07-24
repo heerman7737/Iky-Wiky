@@ -9,36 +9,47 @@ import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 import { Typography} from '@material-ui/core';
 import Dialog from './Dialog'
+import Slide from '@material-ui/core/Slide';
+// import { throws } from 'assert';
 
 class News extends Component {
     constructor() {
         super()
         this.state = {
             news: [],
-            isOpen: false
+            isOpen: false,
+            articleIndex: 0
         }
-    }
-
-    state = {
-        news: []
+        this.openArticle = this.openArticle.bind(this)
     }
 
     componentDidMount() {
-        Axios.get(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=8644dea7986142a98ccb5fbf2d78ec29`)
+        Axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=8644dea7986142a98ccb5fbf2d78ec29`)
             .then(res => {
-                console.log(res)
                 this.setState({ news: res.data.articles })
             })
             .catch(error => console.log(error))
     }
+
+    openArticle(index) {
+        this.setState({
+            isOpen: true,
+            articleIndex: index
+        })
+        console.log(this.state.articleIndex)
+        console.log(this.state.articleIndex.url)
+        console.log(this.state.news)
+    }
    
-
-
     render() {
+        const { news, articleIndex } = this.state
+
+        // console.log(this.state.news)
         return (
             <>
-          { this.state.news.map(article => {
-                   return<Card className="cards">
+          { news.map((article, index) => {
+                   return (
+                   <Card className="cards">
                             <Typography variant="h5" key={article}>{article.title} 
                             
                                     {/* {article.publishedAt} */}
@@ -52,18 +63,27 @@ class News extends Component {
                                     <Divider />
                                 </CardContent>
                                     <CardActions>
-                                        <Button size="small" variant="outlined" color="inherit" onClick={(e) => this.setState({ isOpen:true })}>Read More</Button>
-                                        <Dialog isOpen={this.state.isOpen}
-                                        onClose={(e) => this.setState({ isOpen:false })}>
-                                        <iframe title="full-article" src={article.url} width="500" height="400" allowfullscreen="allowfullscreen"></iframe>
-                                        </Dialog>
+                                        <Button size="small" variant="outlined" color="inherit" onClick={(e)=>this.openArticle(index)}>Read More
+                                        </Button>
                                         <Badge color="secondary" badgeContent={8} >
                                            <Button size="small" variant="outlined" color="secondary">Fake News</Button>
                                         </Badge>
                                         
                                     </CardActions>
-                            </Card> 
+                   </Card>
+                   ) 
+                    
                     })}
+            {news[articleIndex] &&
+           
+            <Dialog 
+                isOpen={this.state.isOpen}
+                onClose={(e) => this.setState({ isOpen:false })}>
+                <iframe title="full-article" src={news[articleIndex].url} width="500px" height="480px" allowfullscreen="allowfullscreen"></iframe>
+                <a href={news[articleIndex].url}>Go to Article Website</a>
+            </Dialog>
+            
+            }
           
             </>
         )

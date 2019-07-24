@@ -6,12 +6,15 @@ import Button from '@material-ui/core/Button';
 class Dialog extends Component {
     render() {
         let dialog = (
-            <div className="dialogStyles">
+            
+            <div className="dialogBody">
 
                 <button className="buttonStyle" onClick={this.props.onClose}>x</button>
 
-                <div>{this.props.children}</div>
+                <div className="dialogContent">{this.props.children}
+                </div>
             </div>
+           
         );
 
         if (! this.props.isOpen) {

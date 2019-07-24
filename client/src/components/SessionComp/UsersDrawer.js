@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme =>
   }),
 );
 
-export default function UserDrawer() {
+export default function UserDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -88,7 +88,8 @@ export default function UserDrawer() {
   }
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root}
+    >
       
           <IconButton
             color="inherit"
@@ -122,13 +123,12 @@ export default function UserDrawer() {
           Current Users
       </Typography>
       <Divider />
-        <List>
           
-            <ListItem>
-            <OutlinedChip/>
-            </ListItem>
-        </List>
-       
+            <OutlinedChip 
+                currentUser={props.currentUser}
+                users={props.users}
+            />
+           
       </Drawer>
    
     </div>
