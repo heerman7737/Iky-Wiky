@@ -39,7 +39,7 @@ class RoomList extends Component{
                     id={room.id} 
                     onClick={this.props.action} 
                     key={index}>
-      
+                    
                     </RoomListItem>
                     </ListItem>
                     )
