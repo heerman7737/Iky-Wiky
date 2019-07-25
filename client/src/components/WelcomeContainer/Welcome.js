@@ -7,14 +7,16 @@ import Grid from '@material-ui/core/Grid';
 
 
 class Welcome extends Component {
-    
+    state={
+        username:localStorage.getItem("user_name")
+    }
     render() {
         
         return (
             <>
                 
                 <Grid container justify="center" alignItems="center" className="welcome">
-                    <h1 className="intro">Welcome Username</h1>
+                    <h1 className="intro">Welcome {`${this.state.username}`}</h1>
 
                 {/* dynamically add username and avatar */}
                 

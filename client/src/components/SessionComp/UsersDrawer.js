@@ -127,6 +127,7 @@ export default function UserDrawer(props) {
             <OutlinedChip 
                 currentUser={props.currentUser}
                 users={props.users}
+                rooms={props.rooms}
             />
            
       </Drawer>
