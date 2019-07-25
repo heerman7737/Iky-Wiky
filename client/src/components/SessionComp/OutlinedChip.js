@@ -17,7 +17,7 @@ class OutlinedChipItem extends Component{
 
         {this.props.children}
         </button>
-
+      {/* <p style={{display: "inline-block",marginLeft:"225px"}}>Haha</p> */}
       </li>
     )
   }
@@ -31,13 +31,36 @@ class OutlinedChip extends Component{
   handleClick=e=>{
     e.preventDefault()
 
-    console.log(e.target.id)
-    console.log(e.target.name)
-    console.log(this.props.currentUser)
-    this.props.currentUser.createRoom({
+    // console.log(e.target.id)
+    // console.log(e.target.name)
+    // console.log(this.props.currentUser)
+    const {currentUser,rooms}=this.props
+    console.log(currentUser,rooms)
+    const privateChatCreated = rooms.filter(room=>{
+      if(room.customData && room.customData.isDirectMessage){
+          const arr =[currentUser.id,e.target.id]
+          const {userIds}= room.customData
+          if (arr.sort().join('') === userIds.sort().join('')) {
+            return {
+              room
+            };
+          }
+        }
+    
+        return false;
+      
+    })
+    if (privateChatCreated.length > 0) {
+      return Promise.resolve(privateChatCreated[0]);
+    }
+    return this.props.currentUser.createRoom({
       name: `${e.target.name}`,
       private:true,
-      addUserIds:[`${e.target.id}`]
+      addUserIds:[`${e.target.id}`],
+      customData: {
+        isDirectMessage: true,
+        userIds: [currentUser.id, e.target.id]
+      }
     })
     .then(room=>{
       this.setState({room})

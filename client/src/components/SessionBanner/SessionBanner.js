@@ -18,6 +18,7 @@ class SessionBanner extends Component {
                     <UserDrawer
                         currentUser={this.props.currentUser}
                         users={this.props.users}
+                        rooms={this.props.rooms}
                     />
                     {this.props.currentRoom ?
                         <Typography variant="h4" className="Logo" >

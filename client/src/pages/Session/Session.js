@@ -86,6 +86,9 @@ changingRoom(e){
          rooms:[...this.state.rooms,room]
        })
      }})
+      // .then(currentUser=>{
+      //   return currentUser.getJoinableRooms().then(rooms=>{console.log(rooms)})
+      // })
       .then(currentUser => {
         this.setState({ currentUser })
         this.setState({rooms:currentUser.rooms})

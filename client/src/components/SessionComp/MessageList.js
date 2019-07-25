@@ -5,6 +5,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import ReactDOM from 'react-dom'
+import { format } from 'date-fns';
+
 class MessagesList extends Component {
   componentWillUpdate() {
     const node = ReactDOM.findDOMNode(this)
@@ -26,7 +28,7 @@ componentDidUpdate() {
     
         <List >
            {this.props.messages.map((message, index) => (
-
+            
              <ListItem key={index} >
            
                  <ListItemAvatar>
@@ -41,7 +43,9 @@ componentDidUpdate() {
                <ListItemText className="messages">
                
                {message.text}
+              
                </ListItemText>
+               <span>{format(new Date(`${message.updatedAt}`), 'HH:mm')}</span>
              </ListItem>
            ))}
          </List>
