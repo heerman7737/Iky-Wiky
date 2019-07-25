@@ -5,7 +5,6 @@ import './Profile.css'
 import Avatar from '@material-ui/core/Avatar'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import Edit from '@material-ui/icons/Edit'
 import Email from '@material-ui/icons/Email'
 import Face from '@material-ui/icons/Face'
 import Lock from '@material-ui/icons/Lock'
@@ -14,8 +13,7 @@ import TextField from '@material-ui/core/TextField'
 import chatUtils from '../../utils/chatUtils.js'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+
 
 class Profile extends Component {
 
@@ -28,7 +26,22 @@ class Profile extends Component {
         password: "",
         currentUser: null
     }
-
+    // componentWillMount(){
+    //   let userId=localStorage.getItem("userId")
+    //   const tokenProvider = new Chatkit.TokenProvider({
+    //     url: 'http://localhost:3001/authenticate',
+    // });
+    // const chatManager = new Chatkit.ChatManager({
+    //     instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
+    //     userId,
+    //     tokenProvider
+    // });
+    // // chatManager.connect()
+    // //     .then(currentUser => {
+    // //         this.setState({
+    // //             currentUser
+    // //         })}
+    // }
     handleUpdateUser = e => {
         e.preventDefault()
         console.log(this.state)
@@ -92,6 +105,12 @@ class Profile extends Component {
       })
     }
 
+    clearlocalStorage=()=>{
+      console.log(this.state.currentUser)
+      // localStorage.clear()  
+      // this.state.currentUser.disconnect()
+  
+    }
 
   render () {
     return (
@@ -137,6 +156,10 @@ class Profile extends Component {
             <Button variant="outlined" color="inherit" className='SaveButt' onClick={this.handleUpdateUser}>Update</Button>
             <Button variant="outlined" color="secondary" className='CancelButt'>Cancel</Button>
           </Grid>
+          <Grid container justify='center' alignItems='center' className='Update'>
+          <button onClick={this.clearlocalStorage}>Clear</button> 
+          </Grid>
+
         </div>
         <Nav />
       </div>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Chip from '@material-ui/core/Chip';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 class RoomListItem extends Component{
@@ -39,7 +38,7 @@ class RoomList extends Component{
                     id={room.id} 
                     onClick={this.props.action} 
                     key={index}>
-      
+                    
                     </RoomListItem>
                     </ListItem>
                     )

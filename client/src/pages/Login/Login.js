@@ -29,10 +29,6 @@ class Login extends Component {
       }
       this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
     }
-
-    clearlocalStorage=()=>{
-  localStorage.clear()  
-}
   
     render() {
       const { isLogginActive } = this.state;
@@ -59,9 +55,6 @@ class Login extends Component {
               containerRef={ref => (this.rightSide = ref)}
               onClick={this.changeState.bind(this)}
             />
-<button onClick={this.clearlocalStorage}>Clear</button> 
-
-
           </div>
         </div>
       );
