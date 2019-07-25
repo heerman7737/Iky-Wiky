@@ -48,7 +48,7 @@ export default function ChatsDrawer(props) {
   }
  
   return (
-    <div >
+    <div>
       
           <IconButton
             color="inherit"

@@ -20,7 +20,7 @@
     border-radius: 20px;
     padding: 5px 15px;
     margin: 8px !important;
-    background:#fff;
+    background:linear-gradient(45deg,#b0d3bf  30%, #fff 125%);
     display: inline-block;
     hyphens: auto;
     -webkit-hyphens: auto    ;

@@ -27,7 +27,7 @@ class RoomList extends Component{
     render(){
         return(
             
-            <List style={{overflowY : 'auto' }}>
+            <List style={{overflowY : 'auto' }} >
                 
             {
                 this.props.rooms.map((room,index)=>{

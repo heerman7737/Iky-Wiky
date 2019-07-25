@@ -23,6 +23,20 @@
     box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.5);
 }
 
+.dark-mode .chatContainer {
+    background:rgb(49, 47, 47);
+}
+
+.dark-mode .messages {
+    background:black;
+    color:white;
+}
+
+.dark-mode .drawerHeader {
+    background:#b9c0ba;
+
+}
+
 
 #AppBar {
     display:flex;
