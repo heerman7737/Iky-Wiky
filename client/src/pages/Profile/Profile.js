@@ -5,7 +5,6 @@ import './Profile.css'
 import Avatar from '@material-ui/core/Avatar'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import Edit from '@material-ui/icons/Edit'
 import Email from '@material-ui/icons/Email'
 import Face from '@material-ui/icons/Face'
 import Lock from '@material-ui/icons/Lock'
@@ -14,8 +13,7 @@ import TextField from '@material-ui/core/TextField'
 import chatUtils from '../../utils/chatUtils.js'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+
 
 class Profile extends Component {
 

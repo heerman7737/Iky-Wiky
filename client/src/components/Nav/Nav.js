@@ -7,23 +7,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import ChatIcon from '@material-ui/icons/Chat';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-// class Nav extends Component {
-//     render() {
-//         return (
-//             <BottomNavigation className="nav" fixed >
-                
-//                 <Link label="chat" to="/" />
-//                 <BottomNavigationAction label="chat"  value=""icon={<ChatIcon />} />
-//                 <BottomNavigationAction label="list"  icon={<BookIcon />} />
-//                 <Link label="account" to="Profile" icon={<AccountCircleIcon />} />
-
-//             </BottomNavigation>
-//         );
-//     }
-// }
-
-// export default Nav;
-
 class Nav extends Component {
     state = {
       value: 0,

@@ -22,7 +22,7 @@ class SessionBanner extends Component {
                     {this.props.currentRoom ?
                         <Typography variant="h4" className="Logo" >
                             {this.props.currentRoom.name}
-                        </Typography> : <img style={{height:'80px'}} src="https://ui-ex.com/images/background-transparent-loading-3.gif" />
+                        </Typography> : <img style={{height:'40px'}} src="https://ui-ex.com/images/background-transparent-loading-3.gif" alt="loader"/>
                     }
                     <ChatsDrawer
                         currentUser={this.props.currentUser}

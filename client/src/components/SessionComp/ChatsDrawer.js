@@ -1,20 +1,18 @@
 import React from 'react';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
 import RoomList from './RoomList'
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 
 
-const drawerWidth = '100%';
+
+const drawerWidth = '80%';
 
 
 const useStyles = makeStyles(theme => ({

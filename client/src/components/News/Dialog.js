@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-
 
 
 class Dialog extends Component {
@@ -10,8 +8,8 @@ class Dialog extends Component {
             <div className="dialogBody">
 
                 <button className="buttonStyle" onClick={this.props.onClose}>x</button>
-
-                <div className="dialogContent">{this.props.children}
+                
+                <div className="dialogContent">{this.props.children} 
                 </div>
             </div>
            
@@ -19,10 +17,10 @@ class Dialog extends Component {
 
         if (! this.props.isOpen) {
             dialog = null;
-        }
+        } 
         return (
             <div>
-                {dialog}
+                {dialog} 
             </div>
         );
     }

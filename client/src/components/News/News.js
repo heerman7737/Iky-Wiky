@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 import { Typography} from '@material-ui/core';
 import Dialog from './Dialog'
-import Slide from '@material-ui/core/Slide';
+
 // import { throws } from 'assert';
 
 
@@ -38,9 +38,9 @@ class News extends Component {
             isOpen: true,
             articleIndex: index
         })
-        console.log(this.state.articleIndex)
-        console.log(this.state.articleIndex.url)
-        console.log(this.state.news)
+        // console.log(this.state.articleIndex)
+        // console.log(this.state.articleIndex.url)
+        // console.log(this.state.news)
     }
    
     render() {
@@ -50,11 +50,10 @@ class News extends Component {
             <>
           { news.map((article, index) => {
                    return (
-                   <Card className="cards">
+                   <Card className="cards" key={index}>
                             <Typography variant="h5" key={article}>{article.title} 
                             
-                                    {/* {article.publishedAt} */}
-                                    {/* {article.urlToImage} */}
+
                             <Divider />
                             </Typography>
                                 <CardContent>
@@ -71,22 +70,24 @@ class News extends Component {
                                         </Badge>
                                         
                                     </CardActions>
+
                    </Card>
                    ) 
-                    
+                  
                     })}
             {news[articleIndex] &&
            
             <Dialog 
-                isOpen={this.state.isOpen}
+                isOpen={this.state.isOpen} 
                 onClose={(e) => this.setState({ isOpen:false })}>
                 <iframe title="full-article" 
                 src={news[articleIndex].url} width="500px" 
-                height="525px" allowfullscreen="allowfullscreen"></iframe>
+                height="525px" allowFullScreen="allowfullscreen"></iframe> 
                 <Button 
                 style={{background:'linear-gradient(45deg, #eee 30%, #B0D3BF 90%)' , marginTop:"3px"}} 
                 href={news[articleIndex].url}>Go to Article Website</Button>
-            </Dialog>
+            </Dialog> 
+            
             
             }
           
