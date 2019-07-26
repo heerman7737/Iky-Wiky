@@ -70,7 +70,7 @@ changingRoom(e){
         })
 
   }
-  componentWillMount () {
+  componentDidMount () {
     let userId= localStorage.getItem("userId")
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',

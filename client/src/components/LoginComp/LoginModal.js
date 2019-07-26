@@ -19,31 +19,43 @@ class LoginModal extends React.Component {
       console.log(data)
       localStorage.setItem("userId",data.data[0]._id)
       localStorage.setItem("user_name",data.data[0].username)
+      if(data.request.status===200){
+        localStorage.setItem("Authenticate",true)
+      }
+      else{
+        localStorage.setItem("Authenticate",false)
+      }
     })
-    .then(console.log("Working"))
+    .then(resp => {
+      console.log("Working")
+      let userId= localStorage.getItem("userId")
+      let user_name= localStorage.getItem("user_name")
+      console.log('user '+userId)
+      axios.post('http://localhost:3001/user',{userId,user_name})
+      //  .then(()=>{
+         console.log(userId,user_name)
+         const tokenProvider = new Chatkit.TokenProvider({
+           url: 'http://localhost:3001/authenticate',
+         });
+         const chatManager = new Chatkit.ChatManager({
+           instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
+           userId,
+           tokenProvider
+         });
+         chatManager.connect()
+         .then(currentUser => {
+           console.log('Successful connection', currentUser)
+           history.push('/Session')
+         })
+         .catch(err => {
+           console.log('Error on connection', err)
+         })
+         
+
+    })
     .catch(error => console.log(error))
-    let userId= localStorage.getItem("userId")
-   let user_name= localStorage.getItem("user_name")
-   console.log('user '+userId)
-   axios.post('http://localhost:3001/user',{userId,user_name})
-  //  .then(()=>{
-     console.log(userId,user_name)
-     const tokenProvider = new Chatkit.TokenProvider({
-       url: 'http://localhost:3001/authenticate',
-     });
-     const chatManager = new Chatkit.ChatManager({
-       instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
-       userId,
-       tokenProvider
-     });
-     chatManager.connect()
-     .then(currentUser => {
-       console.log('Successful connection', currentUser)
-     })
-     .catch(err => {
-       console.log('Error on connection', err)
-     })
-     history.push('/Session')
+
+
   //  })
   }
 

@@ -24,8 +24,11 @@ class RegisterModal extends React.Component {
     .then((data) =>{
       localStorage.setItem("userId",data.data[0]._id)
       localStorage.setItem("user_name",data.data[0].username)
+   
+      localStorage.setItem("Authenticate",true)
+
   })  
-  .then(()=>{
+  .then(res=>{
     let userId= localStorage.getItem("userId")
     let user_name= localStorage.getItem("user_name")
     console.log('user '+userId)
@@ -45,21 +48,23 @@ class RegisterModal extends React.Component {
         this.setState({
           currentUser
         })
+        history.push('/Home')
         console.log(this.state.currentUser)
         console.log('Successful connection')
         currentUser.joinRoom({ roomId: '20092547' })
         .then(room => {
           console.log(`Joined room with ID: ${room.id}`)
+
         })
         .catch(err => {
           console.log(`Error joining room ${20092547}: ${err}`)
         })
       })
-        
+
       .catch(err => {
         console.log('Error on connection', err)
       })
-      history.push('/Home')
+     
     // })
   })
 )
