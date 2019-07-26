@@ -59,7 +59,7 @@ class RegisterModal extends React.Component {
       .catch(err => {
         console.log('Error on connection', err)
       })
-      history.push('/Session')
+      history.push('/Home')
     // })
   })
 )
@@ -85,23 +85,23 @@ class RegisterModal extends React.Component {
           <div className="form" connection={this.props}>
             <div className="form-group">
               <label htmlFor="first_name">First Name</label>
-              <input onChange={this.handleInputs} id="first_name" placeholder="First Name" />
+              <input onChange={this.handleInputs} type='text' id="first_name" placeholder="First Name" required/>
             </div>
             <div className="form-group">
               <label htmlFor="last_name">Last Name</label>
-              <input onChange={this.handleInputs} id="last_name" placeholder="Last Name" />
+              <input onChange={this.handleInputs} type='text' id="last_name" placeholder="Last Name" required/>
             </div>
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input onChange={this.handleInputs} id="username" placeholder="Username" />
+              <input onChange={this.handleInputs} type='text' id="username" placeholder="Username" required/>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input onChange={this.handleInputs} id="password" placeholder="Password" />
+              <input onChange={this.handleInputs} type='password' id="password" placeholder="Password" required/>
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone</label>
-              <input onChange={this.handleInputs} id="phone" placeholder="Phone Number" />
+              <input onChange={this.handleInputs} type='number' id="phone" placeholder="Phone Number" required/>
             </div>
             <div className="form-group">
             <button onClick={this.handleAddUser} className="btn">

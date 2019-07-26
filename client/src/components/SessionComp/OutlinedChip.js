@@ -54,7 +54,7 @@ class OutlinedChip extends Component{
       return Promise.resolve(privateChatCreated[0]);
     }
     return this.props.currentUser.createRoom({
-      name: `${e.target.name}`,
+      name: `${e.target.name}/${this.props.currentUser.name}`,
       private:true,
       addUserIds:[`${e.target.id}`],
       customData: {
