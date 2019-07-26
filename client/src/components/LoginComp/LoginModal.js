@@ -56,7 +56,7 @@ class LoginModal extends React.Component {
 
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Blabble</div>
+        <div className="header1">Blabble</div>
         <div className="content">
         {this.props.children}
           <div className="form">
