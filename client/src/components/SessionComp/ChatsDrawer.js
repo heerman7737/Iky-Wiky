@@ -9,7 +9,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import RoomList from './RoomList'
 import Fab from '@material-ui/core/Fab';
-import Switch from '@material-ui/core/Switch';
 
 
 
