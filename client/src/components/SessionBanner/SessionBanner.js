@@ -27,6 +27,7 @@ class SessionBanner extends Component {
                     }
                     <ChatsDrawer
                         currentUser={this.props.currentUser}
+                        users={this.props.users}
                         rooms={this.props.rooms}
                         action={this.props.action}
                     />
