@@ -106,7 +106,9 @@ export default function ChatsDrawer(props) {
 class GroupChatForm extends React.Component{
   state={
     roomName:null,
-    users:this.props.users
+    users:this.props.users,
+    // checkPublic:true,
+    checkPrivate:false
   }
 
   createGroupChat=e=>{
@@ -115,6 +117,7 @@ class GroupChatForm extends React.Component{
     const arr = this.state.users.map(user=>{
       return user.id
     })
+
     console.log(arr)
     if (this.state.roomName === null) {
       alert("Please Enter Chatroom Name!");
@@ -133,6 +136,11 @@ class GroupChatForm extends React.Component{
     this.setState({users:this.props.users})
     // console.log(this.state.roomName)
   }
+  clickPrivate(e){
+    e.preventDefault()
+    this.setState({checkPrivate:!this.state.checkPrivate})
+
+  }
   render(){
     return(
       <>
@@ -145,12 +153,12 @@ class GroupChatForm extends React.Component{
                style={{width:'100%' , height:'40%' , fontSize:'16px' ,  }}
                
              />
-              <Switch
-        // checked={}
-        // onChange={handleChange('')}
+              {/* <Switch
+        checked={this.state.checkPrivate}
+        onChange={this.clickPrivate}
         value="checked"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
-      />
+      /> */}
       <Fab 
       variant="extended"
       style={{background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)', color:'white' , width:'100%' , fontWeight:'bold' , marginTop:'2px'}}

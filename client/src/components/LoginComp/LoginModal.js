@@ -3,6 +3,7 @@ import chatUtils from '../../utils/chatUtils'
 import './Login.scss'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
+import history from '../../utils/history'
 class LoginModal extends React.Component {
 
   state = {
@@ -25,7 +26,7 @@ class LoginModal extends React.Component {
    let user_name= localStorage.getItem("user_name")
    console.log('user '+userId)
    axios.post('http://localhost:3001/user',{userId,user_name})
-   .then(()=>{
+  //  .then(()=>{
      console.log(userId,user_name)
      const tokenProvider = new Chatkit.TokenProvider({
        url: 'http://localhost:3001/authenticate',
@@ -35,14 +36,15 @@ class LoginModal extends React.Component {
        userId,
        tokenProvider
      });
-     return chatManager.connect()
+     chatManager.connect()
      .then(currentUser => {
        console.log('Successful connection', currentUser)
      })
      .catch(err => {
        console.log('Error on connection', err)
      })
-   })
+     history.push('/Session')
+  //  })
   }
 
 
@@ -66,7 +68,7 @@ class LoginModal extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input onChange={this.handleInputs} id='password' placeholder='password' />
+              <input onChange={this.handleInputs} type='password' id='password' placeholder='password' />
             </div>
           </div>
         </div>
