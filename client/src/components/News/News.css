@@ -1,9 +1,13 @@
 
 
 .cards {
- 
  margin:15px;
  padding:20px;
+ border-radius:25px!important;
+ -webkit-border-radius:25px!important;
+ -moz-border-radius:25px!important;
+ -ms-border-radius:25px!important;
+ -o-border-radius:25px!important;
 }
 
 .dialogBody {
@@ -55,4 +59,10 @@
     -ms-border-radius:50%;
     -o-border-radius:50%;
 }
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 

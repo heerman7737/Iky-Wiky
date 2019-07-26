@@ -9,7 +9,8 @@ class Dialog extends Component {
 
                 <button className="buttonStyle" onClick={this.props.onClose}>x</button>
                 
-                <div className="dialogContent">{this.props.children} 
+                <div className="dialogContent">
+                {this.props.children} 
                 </div>
             </div>
            

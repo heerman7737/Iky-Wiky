@@ -39,7 +39,7 @@ componentDidUpdate() {
                  
                  </ListItemAvatar>{' '}
                 
-                 <ListItemText primary={message.sender.name} 
+                 <ListItemText style={{color:'white'}}primary={message.sender.name} 
                  secondary={
                    <React.Fragment>
                      <Typography
@@ -57,7 +57,7 @@ componentDidUpdate() {
                 
               
                </ListItemText> */}
-               <span>{format(new Date(`${message.updatedAt}`), 'HH:mm')}</span>
+               <span style={{color:'white'}}>{format(new Date(`${message.updatedAt}`), 'HH:mm')}</span>
              </ListItem>
            ))}
          </List>
