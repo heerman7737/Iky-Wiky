@@ -10,10 +10,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import RoomList from './RoomList'
 import Fab from '@material-ui/core/Fab';
 
-
-
-
-
 const drawerWidth = '80%';
 
 

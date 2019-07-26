@@ -23,7 +23,7 @@ const App = _ => {
     <div className={darkMode ?  'light-mode' : 'dark-mode' }>
       <Router history={history}>
         <Route exact path='/' component={_ => <Login />} />
-        <ProtectedRoute path='/Home' component={props => <Home darkModeToggle={setDarkMode} />} />
+        <Route path='/Home' render={props => <Home darkModeToggle={setDarkMode} />} />
         <ProtectedRoute path='/Session' component={_ => <Session />} />
         <ProtectedRoute path='/News' component={_ => <NewsPage />} />
         <ProtectedRoute path='/Profile' component={_ => <Profile />} />
