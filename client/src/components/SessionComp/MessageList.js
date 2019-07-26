@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { ListItemAvatar } from '@material-ui/core';
+import { ListItemAvatar, Typography } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import ReactDOM from 'react-dom'
 import { format } from 'date-fns';
-
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 class MessagesList extends Component {
   componentWillUpdate() {
     const node = ReactDOM.findDOMNode(this)
@@ -33,19 +33,31 @@ componentDidUpdate() {
            
                  <ListItemAvatar>
                  <Avatar>
-                    
-                    {message.sender.name}
+                    <AccountCircleIcon/>
                 </Avatar>
                  
                  
                  </ListItemAvatar>{' '}
-               
-               <ListItemText className="messages">
-               
-               {message.text}
+                
+                 <ListItemText style={{color:'white'}}primary={message.sender.name} 
+                 secondary={
+                   <React.Fragment>
+                     <Typography
+                      className="messages"
+                     component='span'
+                     variant="body2"
+                     >
+                     {message.text}
+                     </Typography>
+                   </React.Fragment>
+                 }
+                 />
+               {/* <ListItemText className="messages" primary={message.text}>
               
-               </ListItemText>
-               <span>{format(new Date(`${message.updatedAt}`), 'HH:mm')}</span>
+                
+              
+               </ListItemText> */}
+               <span style={{color:'white'}}>{format(new Date(`${message.updatedAt}`), 'HH:mm')}</span>
              </ListItem>
            ))}
          </List>

@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     root: {
       display: 'flex',
+      
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
@@ -42,9 +43,12 @@ const useStyles = makeStyles(theme =>
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
+
     },
     drawerPaper: {
       width: drawerWidth,
+      background: 'linear-gradient( #525855, #b9c0ba)',
+      
     },
     drawerHeader: {
       display: 'flex',
@@ -52,6 +56,8 @@ const useStyles = makeStyles(theme =>
       padding: '0 8px',
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
+      
+
     },
     content: {
       flexGrow: 1,
@@ -117,7 +123,7 @@ export default function UserDrawer(props) {
         </div>
         <Divider />
         <Divider />
-        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#b0d3bf',fontSize: '2.5rem'}}>
+        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#fff',fontSize: '2.5rem'}}>
           Current Users
       </Typography>
       <Divider />

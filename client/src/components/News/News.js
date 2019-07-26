@@ -89,7 +89,7 @@ class News extends Component {
             </Dialog> 
             
             
-            }
+            } : <img className="news" style={{height:'100px'}} src="https://ui-ex.com/images/background-transparent-loading-3.gif" alt="loader"/>
           
             </>
         )

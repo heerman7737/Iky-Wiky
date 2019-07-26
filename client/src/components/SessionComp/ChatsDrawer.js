@@ -9,6 +9,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import RoomList from './RoomList'
 import Fab from '@material-ui/core/Fab';
+import Switch from '@material-ui/core/Switch';
+
 
 
 
@@ -22,6 +24,9 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    background: 'linear-gradient( #525855, #b9c0ba)',
+    
+   
   },
   drawerHeader: {
     display: 'flex',
@@ -29,6 +34,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
+    
   }
 
 }));
@@ -48,7 +54,7 @@ export default function ChatsDrawer(props) {
   }
  
   return (
-    <div >
+    <div>
       
           <IconButton
             color="inherit"
@@ -76,7 +82,7 @@ export default function ChatsDrawer(props) {
           </IconButton>
           </div>
         <Divider />
-        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'#b0d3bf',fontSize: '2.5rem'}}>
+        <Typography variant="h5" style={{textAlign: "center",fontFamily:'Leckerli One',color:'white',fontSize: '2.5rem'}}>
           Chat Rooms
       </Typography>
       <Divider />
@@ -131,6 +137,12 @@ class GroupChatForm extends React.Component{
                style={{width:'100%' , height:'40%' , fontSize:'16px' ,  }}
                
              />
+              <Switch
+        // checked={}
+        // onChange={handleChange('')}
+        value="checked"
+        inputProps={{ 'aria-label': 'secondary checkbox' }}
+      />
       <Fab 
       variant="extended"
       style={{background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)', color:'white' , width:'100%' , fontWeight:'bold' , marginTop:'2px'}}

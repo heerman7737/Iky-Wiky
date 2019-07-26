@@ -13,7 +13,7 @@ import TextField from '@material-ui/core/TextField'
 import chatUtils from '../../utils/chatUtils.js'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
-
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 class Profile extends Component {
 
@@ -126,38 +126,68 @@ class Profile extends Component {
             <Avatar alt='Remy Sharp' src='https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' className='Profilepic' />
           </Grid>
           <Grid container justify='center' alignItems='center' className='Name'>
-            <h4>UserName</h4>
+      
           </Grid>
           <br />
           <Grid container justify='center' alignItems='center' className='UseName'>
-            <Face />
-            <h4>Name: </h4>
-            <TextField onChange={this.handleInputs} name='first_name' id='input-with-icon-grid' label='First Name' />
-            <TextField onChange={this.handleInputs} name='last_name' id='input-with-icon-grid' label='Last Name' />
+           
+            
+            <TextField onChange={this.handleInputs} name='first_name' id='input-with-icon-grid' label='First Name' InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Face />
+                  </InputAdornment>
+                ),
+              }}/>
+            
+          </Grid>
+          <Grid container justify='center' alignItems='center' >
+          <TextField onChange={this.handleInputs} name='last_name' id='input-with-icon-grid' label='Last Name'InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Face />
+                  </InputAdornment>
+                ),
+              }} />
           </Grid>
           <Grid container justify='center' alignItems='center' className='EmailUpdate'>
-            <Email />
-            <h4>Email: </h4>
-            <TextField onChange={this.handleInputs} name='email' id='input-with-icon-grid email' label='Email' />
+          
+            
+            <TextField onChange={this.handleInputs} name='email' id='input-with-icon-grid email' label='Email' InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Email />
+                  </InputAdornment>
+                ),
+              }}/>
           </Grid>
           <Grid container justify='center' alignItems='center' className='PhoneUpdate'>
-            <Phone />
-            <h4>Phone: </h4>
-            <TextField onChange={this.handleInputs} name='phone' id='input-with-icon-grid phone' label='Phone Number' />
+            
+            <TextField onChange={this.handleInputs} name='phone' id='input-with-icon-grid phone' label='Phone Number' InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Phone />
+                  </InputAdornment>
+                ),
+              }}/>
           </Grid>
           <Grid container justify='center' alignItems='center' className='PasswordUpdate'>
-            <Lock />
-            <h4>Password:</h4>
-            <TextField onChange={this.handleInputs} name='password' id='input-with-icon-grid password' label='Password' />
+          
+            <TextField onChange={this.handleInputs} name='password' id='input-with-icon-grid password' label='Password' InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Lock />
+                  </InputAdornment>
+                ),
+              }}/>
 
-  
           </Grid>
           <Grid container justify='center' alignItems='center' className='Update'>
             <Button variant="outlined" color="inherit" className='SaveButt' onClick={this.handleUpdateUser}>Update</Button>
             <Button variant="outlined" color="secondary" className='CancelButt'>Cancel</Button>
           </Grid>
           <Grid container justify='center' alignItems='center' className='Update'>
-          <button onClick={this.clearlocalStorage}>Clear</button> 
+          <Button variant="outlined" onClick={this.clearlocalStorage}>Logout</Button> 
           </Grid>
 
         </div>
