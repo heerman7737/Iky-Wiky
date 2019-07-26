@@ -15,6 +15,7 @@ class Login extends Component {
     componentDidMount() {
       //Add .right by default
       this.rightSide.classList.add("right");
+      localStorage.setItem('Authenticate',false)
     }
   
     changeState() {

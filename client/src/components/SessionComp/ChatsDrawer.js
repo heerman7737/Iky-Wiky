@@ -96,6 +96,7 @@ export default function ChatsDrawer(props) {
          <Divider/>
       <GroupChatForm
       currentUser={props.currentUser}
+      users={props.users}
       />
       </Drawer>
     </div>
@@ -104,26 +105,41 @@ export default function ChatsDrawer(props) {
 
 class GroupChatForm extends React.Component{
   state={
-    roomName:null
+    roomName:null,
+    users:this.props.users,
+    // checkPublic:true,
+    checkPrivate:false
   }
 
   createGroupChat=e=>{
     e.preventDefault();
+    console.log(this.state.users)
+    const arr = this.state.users.map(user=>{
+      return user.id
+    })
+
+    console.log(arr)
     if (this.state.roomName === null) {
       alert("Please Enter Chatroom Name!");
     } else {
     this.props.currentUser.createRoom({
       name:`${this.state.roomName}`,
       private:false,
-      addUserIds:['admin','Baby']
+      addUserIds:arr
     })
   };
   }
   handleChange=e=>{
     e.preventDefault()
-    console.log(e.target.value)
+    // console.log(e.target.value)
     this.setState({roomName:e.target.value})
-    console.log(this.state.roomName)
+    this.setState({users:this.props.users})
+    // console.log(this.state.roomName)
+  }
+  clickPrivate(e){
+    e.preventDefault()
+    this.setState({checkPrivate:!this.state.checkPrivate})
+
   }
   render(){
     return(

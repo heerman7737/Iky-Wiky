@@ -14,7 +14,7 @@ import chatUtils from '../../utils/chatUtils.js'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
 import InputAdornment from '@material-ui/core/InputAdornment';
-
+import history from '../../utils/history'
 class Profile extends Component {
 
     state = {
@@ -99,6 +99,22 @@ class Profile extends Component {
 
 
     }
+    componentDidMount(){
+      let userId = localStorage.getItem("userId")
+      const tokenProvider = new Chatkit.TokenProvider({
+        url: 'http://localhost:3001/authenticate',
+    });
+    const chatManager = new Chatkit.ChatManager({
+        instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
+        userId,
+        tokenProvider
+    });
+    chatManager.connect()                       
+    .then(currentUser => {
+      this.setState({
+          currentUser
+      })
+    })}
     handleInputs = event => {
       this.setState({
         [event.target.name]: event.target.value
@@ -107,8 +123,9 @@ class Profile extends Component {
 
     clearlocalStorage=()=>{
       console.log(this.state.currentUser)
-      // localStorage.clear()  
-      // this.state.currentUser.disconnect()
+      this.state.currentUser.disconnect()
+      localStorage.clear()  
+      history.push('/')
   
     }
 

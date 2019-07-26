@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route } from 'react-router-dom'
+import { Router, Route, Redirect } from 'react-router-dom'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Session from './pages/Session'
@@ -23,13 +23,27 @@ const App = _ => {
     <div className={darkMode ?  'light-mode' : 'dark-mode' }>
       <Router history={history}>
         <Route exact path='/' component={_ => <Login />} />
-        <Route path='/Home' render={props => <Home darkModeToggle={setDarkMode} />} />
-        <Route path='/Session' component={_ => <Session />} />
-        <Route path='/News' component={_ => <NewsPage />} />
-        <Route path='/Profile' component={_ => <Profile />} />
+        <ProtectedRoute path='/Home' component={props => <Home darkModeToggle={setDarkMode} />} />
+        <ProtectedRoute path='/Session' component={_ => <Session />} />
+        <ProtectedRoute path='/News' component={_ => <NewsPage />} />
+        <ProtectedRoute path='/Profile' component={_ => <Profile />} />
     </Router>
       </div>
   )
   }
-
+  class ProtectedRoute extends React.Component {
+    render () {
+      const { component: Component, ...props } = this.props
+      return (
+        <Route
+          {...props}
+          render={props => (
+            localStorage.getItem('Authenticate') !== 'false' ?
+              <Component {...props} />
+              : <Redirect to='/' />
+          )}
+        />
+      )
+    }
+  }
 export default App 
