@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One&display=swap');
+
 #AppBar {
     display:flex;
 }
@@ -31,6 +33,8 @@
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
 }
+
+
 
 .sendMessageContainer{
     height:50px;

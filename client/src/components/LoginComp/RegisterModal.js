@@ -82,7 +82,7 @@ class RegisterModal extends React.Component {
     return (
       <div className="base-container" ref={this.props.containerRef}>
             {this.props.children}
-        <div className="header">Register</div>
+        <div className="header1">Register</div>
         <div className="content">
           <div className="image">
             

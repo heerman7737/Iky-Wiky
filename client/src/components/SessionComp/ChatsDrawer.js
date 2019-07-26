@@ -10,9 +10,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import RoomList from './RoomList'
 import Fab from '@material-ui/core/Fab';
 
-
-
-
 const drawerWidth = '80%';
 
 
@@ -23,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: 'linear-gradient( #525855, #b9c0ba)',
+    background: 'linear-gradient(to right, #272828, #474a4a, #6a6f6e, #909793, #b9c0ba);',
     
    
   },
@@ -76,7 +73,7 @@ export default function ChatsDrawer(props) {
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} style={{color:'white'}}>
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
           </div>
@@ -143,24 +140,17 @@ class GroupChatForm extends React.Component{
   render(){
     return(
       <>
-    <form style={{ justifyItems:"center"}}>
+    <form style={{ justifyItems:"center" , marginTop:'5px'}}>
          <input
                type="text"
                id="roomName"
                placeholder="Enter room name here"
                onChange={this.handleChange}
-               style={{width:'100%' , height:'40%' , fontSize:'16px' ,  }}
-               
-             />
-              {/* <Switch
-        checked={this.state.checkPrivate}
-        onChange={this.clickPrivate}
-        value="checked"
-        inputProps={{ 'aria-label': 'secondary checkbox' }}
-      /> */}
+               style={{width:'98%' , height:'40%' , fontSize:'16px' , borderRadius:'15px' }}
+  />
       <Fab 
       variant="extended"
-      style={{background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)', color:'white' , width:'100%' , fontWeight:'bold' , marginTop:'2px'}}
+      style={{background: 'linear-gradient(45deg, #589d62 30%, #B0D3BF 90%)', color:'white' , width:'100%' , fontWeight:'bold' , marginTop:'8px', marginBottom:'5px'}}
       onClick={this.createGroupChat}
 
       >Create group chat

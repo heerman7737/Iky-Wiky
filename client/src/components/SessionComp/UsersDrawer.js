@@ -47,7 +47,8 @@ const useStyles = makeStyles(theme =>
     },
     drawerPaper: {
       width: drawerWidth,
-      background: 'linear-gradient( #525855, #b9c0ba)',
+      // background: 'linear-gradient(rgba(10,10,10),#fff )',
+      backgroundImage: 'linear-gradient(to left, #272828, #474a4a, #6a6f6e, #909793, #b9c0ba);',
       
     },
     drawerHeader: {
@@ -117,7 +118,8 @@ export default function UserDrawer(props) {
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} style={{color:'white'}} >
+          
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>

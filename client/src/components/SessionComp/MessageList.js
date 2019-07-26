@@ -46,7 +46,9 @@ componentDidUpdate() {
                  
                  </ListItemAvatar>{' '}
 
+
                  <ListItemText style={{color:'white'}}primary={message.sender.name} 
+
                  secondary={
                    <React.Fragment>
                       
