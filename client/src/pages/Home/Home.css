@@ -52,6 +52,13 @@
     background:rgb(49, 47, 47);
 }
 
+.dark-mode .profileContainer {
+    background:linear-gradient( #525855, #b9c0ba);
+}
+
+.dark-mode .profileIcons{
+    color:white;
+}
 
 #AppBar {
     display:flex;

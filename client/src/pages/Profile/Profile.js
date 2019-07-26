@@ -152,7 +152,7 @@ class Profile extends Component {
             <TextField onChange={this.handleInputs} name='first_name' id='input-with-icon-grid' label='First Name' InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Face />
+                    <Face className="profileIcons"/>
                   </InputAdornment>
                 ),
               }}/>
@@ -162,7 +162,7 @@ class Profile extends Component {
           <TextField onChange={this.handleInputs} name='last_name' id='input-with-icon-grid' label='Last Name'InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Face />
+                    <Face className="profileIcons"/>
                   </InputAdornment>
                 ),
               }} />
@@ -173,7 +173,7 @@ class Profile extends Component {
             <TextField onChange={this.handleInputs} name='email' id='input-with-icon-grid email' label='Email' InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Email />
+                    <Email className="profileIcons"/>
                   </InputAdornment>
                 ),
               }}/>
@@ -183,17 +183,18 @@ class Profile extends Component {
             <TextField onChange={this.handleInputs} name='phone' id='input-with-icon-grid phone' label='Phone Number' InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Phone />
+                    <Phone className="profileIcons"/>
+                    
                   </InputAdornment>
                 ),
               }}/>
           </Grid>
           <Grid container justify='center' alignItems='center' className='PasswordUpdate'>
           
-            <TextField onChange={this.handleInputs} name='password' id='input-with-icon-grid password' label='Password' InputProps={{
+            <TextField onChange={this.handleInputs} style={{color:'white'}} name='password' id='input-with-icon-grid password' label='Password' InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Lock />
+                    <Lock className="profileIcons"/>
                   </InputAdornment>
                 ),
               }}/>
@@ -204,7 +205,7 @@ class Profile extends Component {
             <Button variant="outlined" color="secondary" className='CancelButt'>Cancel</Button>
           </Grid>
           <Grid container justify='center' alignItems='center' className='Update'>
-          <Button variant="outlined" onClick={this.clearlocalStorage}>Logout</Button> 
+            <Button variant="contained" color="secondary" onClick={this.clearlocalStorage}>Logout</Button> 
           </Grid>
 
         </div>
