@@ -17,7 +17,7 @@ class Welcome extends Component {
                 <div className='welcome'>
                 <Grid container justify="center" alignItems="center"  >
                
-                    <h1 className="header">Welcome {`${this.state.username}`}</h1>
+                    <h1 className="header1">Welcome {`${this.state.username}`}</h1>
                     
                 </Grid>
                 <Grid container justify="center" alignItems="center">
