@@ -20,7 +20,8 @@ class Session extends Component {
         messages: [],
         usersWhoAreTyping: [],
         users:[],
-        rooms:[]
+        rooms:[],
+        avatar:null
 
     }
     this.sendMessage = this.sendMessage.bind(this)
@@ -93,6 +94,9 @@ changingRoom(e){
         this.setState({ currentUser })
         this.setState({rooms:currentUser.rooms})
         console.log(this.state.currentUser)
+        this.setState({avatar:this.state.currentUser.avatarURL})
+        console.log(this.state.avatar)
+
         this.setState({
           messages:[]
         })
@@ -151,7 +155,7 @@ changingRoom(e){
             <ScrollToBottom>
           <MessageList
               messages={this.state.messages}
-              
+              avatar={this.state.avatar}
             />  
             </ScrollToBottom>   
             <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />

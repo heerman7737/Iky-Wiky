@@ -29,6 +29,7 @@ componentDidUpdate() {
   render() {
   
     // const fromMe = this.props.fromMe ? 'from-me' : '';
+    console.log(this.props.messages)
 
     return (
       <div className="chatContainer" >
@@ -39,8 +40,8 @@ componentDidUpdate() {
              <ListItem key={index} >
            
                  <ListItemAvatar>
-                 <Avatar>
-                    <AccountCircleIcon/>
+                 <Avatar src={message.sender.avatarURL} >
+                    <AccountCircleIcon />
                 </Avatar>
                  
                  
