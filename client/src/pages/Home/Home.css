@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Vollkorn&display=swap');
+
 /* light/dark themes */
 .light-mode .nav {
     background-color:#b0d3bf;
@@ -230,6 +232,7 @@ input#switch{
 
 .welMsg .p {
     font-weight: bolder;
+    font-family: 'Vollkorn', serif;
     text-align: center;
     font-size: 22px;
     margin-top:10%;

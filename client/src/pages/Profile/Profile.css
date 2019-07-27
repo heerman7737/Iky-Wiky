@@ -9,6 +9,7 @@
 
 .Profile{
     margin-top:75px;
+  
 }
 
 .SaveButt {
@@ -22,5 +23,9 @@
 
 .input {
     margin-bottom: 15px;
+}
+
+.Grid {
+    margin-top: 10px;
 }
 
