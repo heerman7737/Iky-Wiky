@@ -1,10 +1,13 @@
  import React, { Component } from 'react'
-
+ import 'emoji-mart/css/emoji-mart.css'
+ import { Picker } from 'emoji-mart'
+ import IconButton from '@material-ui/core/Icon';
  class SendMessageForm extends Component {
    constructor(props) {
      super(props)
      this.state = {
        text: '',
+       clickEmoji:false
      }
      this.onSubmit = this.onSubmit.bind(this)
      this.onChange = this.onChange.bind(this)
@@ -24,12 +27,29 @@
        this.props.onChange()
      }
    }
+   addEmoji = (e) => {
+    console.log(e.native)
+    let emoji = e.native;
+    this.setState({
+      text: this.state.text + emoji
+    })
+  }
+
+  toggleEmojiButton=(e)=>{
+    e.preventDefault()
+    this.setState({clickEmoji:!this.state.clickEmoji}
+      
+      )
+    
+  }
+
 
    render() {
      const styles = {
        container: {
          padding: 10,
          borderTop: '1px #589d62 solid',
+         
        },
        form: {
          display: 'flex',
@@ -42,11 +62,28 @@
          flex: 1,
          fontSize: 16,
        },
+       emojiPicker: {
+        position: "absolute",
+        bottom: 100,
+        right:36,
+        cssFloat: "right",
+        marginLeft: "200px",
+        boxShadow:'5px 5px 20px 0px rgba(0,0,0,0.5)',
+      },
+      button: {
+      width:'100%',
+      background: '#6e706f',
+      color:'white',
+      top:'5px',
+       
+      }
+       
      }
      return (
        <div style={styles.container}>
          <div>
-           <form onSubmit={this.onSubmit} style={styles.form}>
+           <form onSubmit={this.onSubmit} style={styles.form}
+>
              <input
                type="text"
                placeholder="Type a message here then hit ENTER"
@@ -54,7 +91,26 @@
                value={this.state.text}
                style={styles.input}
              />
+
+
+
            </form>
+           <span>
+            
+           {this.state.clickEmoji ?
+           <>
+           <Picker style={styles.emojiPicker} onSelect={this.addEmoji}           
+            />  
+            <IconButton style={styles.button} 
+            
+            onClick={this.toggleEmojiButton}>Emoji</IconButton>
+           </>
+            :
+            <IconButton style={styles.button} 
+            
+            onClick={this.toggleEmojiButton}>Emoji</IconButton>
+           }
+           </span>
          </div>
        </div>
      )

@@ -20,9 +20,11 @@ class News extends Component {
         this.state = {
             news: [],
             isOpen: false,
-            articleIndex: 0
+            articleIndex: 0,
+            clicks: 0
         }
         this.openArticle = this.openArticle.bind(this)
+      
     }
 
     componentDidMount() {
@@ -41,6 +43,14 @@ class News extends Component {
         // console.log(this.state.articleIndex)
         // console.log(this.state.articleIndex.url)
         // console.log(this.state.news)
+    }
+
+    handleClick() {
+    	this.setState((prevState) => ({
+             clicks: prevState.clicks + 1
+             
+        }));
+        
     }
    
     render() {
@@ -65,8 +75,12 @@ class News extends Component {
                                     <CardActions>
                                         <Button size="small" variant="outlined" color="inherit" onClick={(e)=>this.openArticle(index)}>Read More
                                         </Button>
-                                        <Badge color="secondary" badgeContent={8} >
-                                           <Button size="small" variant="outlined" color="secondary">Fake News</Button>
+                                        <Badge color="secondary" badgeContent={this.state.clicks} >
+                                           <Button 
+                                           size="small" 
+                                           variant="outlined" 
+                                           color="secondary"
+                                           onClick={this.handleClick.bind(this)}>Fake News</Button>
                                         </Badge>
                                         
                                     </CardActions>
