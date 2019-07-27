@@ -1,7 +1,7 @@
  import React, { Component } from 'react'
  import 'emoji-mart/css/emoji-mart.css'
  import { Picker } from 'emoji-mart'
- import Button from '@material-ui/core/Button';
+ import IconButton from '@material-ui/core/Icon';
  class SendMessageForm extends Component {
    constructor(props) {
      super(props)
@@ -98,13 +98,17 @@
            <span>
             
            {this.state.clickEmoji ?
+           <>
            <Picker style={styles.emojiPicker} onSelect={this.addEmoji}           
             />  
+            <IconButton style={styles.button} 
             
+            onClick={this.toggleEmojiButton}>Emoji</IconButton>
+           </>
             :
-            <Button style={styles.button} 
+            <IconButton style={styles.button} 
             
-            onClick={this.toggleEmojiButton}>Emoji</Button>
+            onClick={this.toggleEmojiButton}>Emoji</IconButton>
            }
            </span>
          </div>
