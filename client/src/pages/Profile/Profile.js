@@ -13,8 +13,10 @@ import TextField from '@material-ui/core/TextField'
 import chatUtils from '../../utils/chatUtils.js'
 import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
-import InputAdornment from '@material-ui/core/InputAdornment';
+import InputAdornment from '@material-ui/core/InputAdornment'
 import history from '../../utils/history'
+import ReactFilestack from 'filestack-react'
+
 class Profile extends Component {
 
     state = {
@@ -24,7 +26,8 @@ class Profile extends Component {
         avatar: "", //url from AWS
         username: "",
         password: "",
-        currentUser: null
+        currentUser: null,
+        // userId: ""
     }
     // componentWillMount(){
     //   let userId=localStorage.getItem("userId")
@@ -100,6 +103,14 @@ class Profile extends Component {
 
     }
     componentDidMount(){
+
+      this.setState({ // I need help on this part
+        userId: localStorage.getItem("userId")
+      })
+      chatUtils.userInfo(userId, info => {
+        console.log(info)
+      })
+
       let userId = localStorage.getItem("userId")
       const tokenProvider = new Chatkit.TokenProvider({
         url: 'http://localhost:3001/authenticate',
@@ -126,7 +137,18 @@ class Profile extends Component {
       this.state.currentUser.disconnect()
       localStorage.clear()  
       history.push('/')
-  
+    }
+
+    successHandler=(result)=>{
+      if(result.filesFailed.length) {
+        alert("Image failed to upload. Try again.")
+      }
+      else {
+        console.log(result.filesUploaded[0].url)      
+        this.setState({
+          avatar: result.filesUploaded[0].url
+        })
+      }
     }
 
   render () {
@@ -140,8 +162,18 @@ class Profile extends Component {
         <div className='profileContainer' >
           
           <Grid container justify='center' alignItems='center' className='Profile' >
-            <Avatar alt='Remy Sharp' src='https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' className='Profilepic' />
+            <Avatar alt='Remy Sharp' src={this.state.avatar} className='Profilepic' />
           </Grid>
+          <ReactFilestack
+            apikey="AUJn7r4EcQC6XBAhaYWpZz"
+            customRender={({ onPick }) => (
+            <div>
+              <button onClick={onPick}>Update Photo</button>
+            </div>
+            )}
+            onSuccess={this.successHandler}
+          />
+		  
           <Grid container justify='center' alignItems='center' className='Name'>
       
           </Grid>

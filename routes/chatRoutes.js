@@ -41,4 +41,10 @@ module.exports = app => {
         res.status(200)
       })
   })
+
+  app.get('/userInfo/:id', (req, res) => {
+    Chat.find({ _id: req.params.id })
+      .then(data => res.json(data))
+      .catch(error => console.log(error))
+  })
 }
