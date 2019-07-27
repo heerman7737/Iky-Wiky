@@ -66,7 +66,7 @@
        },
        emojiPicker: {
         position: "absolute",
-        bottom: 100,
+        bottom: 135,
         right:36,
         cssFloat: "right",
         marginLeft: "200px",
