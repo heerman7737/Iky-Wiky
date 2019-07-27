@@ -27,7 +27,7 @@ class Profile extends Component {
         username: "",
         password: "",
         currentUser: null,
-        // userId: ""
+        userId: ""
     }
     // componentWillMount(){
     //   let userId=localStorage.getItem("userId")
@@ -104,12 +104,12 @@ class Profile extends Component {
     }
     componentDidMount(){
 
-      this.setState({ // I need help on this part
-        userId: localStorage.getItem("userId")
-      })
-      chatUtils.userInfo(userId, info => {
-        console.log(info)
-      })
+      // this.setState({ // I need help on this part
+      //   userId: localStorage.getItem("userId")
+      // })
+      // chatUtils.userInfo(user, info => {
+      //   console.log(info)
+      // })
 
       let userId = localStorage.getItem("userId")
       const tokenProvider = new Chatkit.TokenProvider({
