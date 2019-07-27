@@ -24,7 +24,8 @@ class Profile extends Component {
         avatar: "", //url from AWS
         username: "",
         password: "",
-        currentUser: null
+        currentUser: null,
+        userId: ""
     }
     // componentWillMount(){
     //   let userId=localStorage.getItem("userId")
@@ -100,6 +101,15 @@ class Profile extends Component {
 
     }
     componentDidMount(){
+
+
+      // this.setState({ // I need help on this part
+      //   userId: localStorage.getItem("userId")
+      // })
+      // chatUtils.userInfo(user, info => {
+      //   console.log(info)
+      // })
+
       let userId = localStorage.getItem("userId")
       const tokenProvider = new Chatkit.TokenProvider({
         url: 'http://localhost:3001/authenticate',
