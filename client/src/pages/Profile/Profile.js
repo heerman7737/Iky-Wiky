@@ -15,17 +15,19 @@ import axios from 'axios'
 import Chatkit from '@pusher/chatkit-client'
 import InputAdornment from '@material-ui/core/InputAdornment';
 import history from '../../utils/history'
+import ReactFilestack from 'filestack-react'
+
 class Profile extends Component {
 
     state = {
-        first_name: "",
-        last_name: "",
-        phone: "",
+        // first_name: "",
+        // last_name: "",
+        // phone: "",
         avatar: "", //url from AWS
-        username: "",
-        password: "",
+        // username: "",
+        // password: "",
         currentUser: null,
-        userId: ""
+        // userId: ""
     }
     // componentWillMount(){
     //   let userId=localStorage.getItem("userId")
@@ -46,57 +48,63 @@ class Profile extends Component {
     handleUpdateUser = e => {
         e.preventDefault()
         console.log(this.state)
-        chatUtils.updateUser(this.state.id, {
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
-          phone: this.state.phone,
-          avatar: this.state.avatar,
-          username: this.state.username,
-          password: this.state.password
-        })
-            .then(chatUtils.login(this.state.username, this.state.password)
-                .then((data) => {
-                    localStorage.setItem("userId", data.data[0]._id)
-                    localStorage.setItem("user_name", data.data[0].username)
-                })
-                .then(() => {
-                    let userId = localStorage.getItem("userId")
-                    let user_name = localStorage.getItem("user_name")
-                    console.log('user ' + userId)
-                    axios.put('http://localhost:3001/updateUser',{})
-                    // .then(()=>{
-                    console.log(userId, user_name)
-                    const tokenProvider = new Chatkit.TokenProvider({
-                        url: 'http://localhost:3001/authenticate',
-                    });
-                    const chatManager = new Chatkit.ChatManager({
-                        instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
-                        userId,
-                        tokenProvider
-                    });
-                    chatManager.connect()
-                        .then(currentUser => {
-                            this.setState({
-                                currentUser
-                            })
-                            console.log(this.state.currentUser)
-                            console.log('Successful connection')
-                            currentUser.joinRoom({ roomId: '20091913' })
-                                .then(room => {
-                                    console.log(`Joined room with ID: ${room.id}`)
-                                })
-                                .catch(err => {
-                                    console.log(`Error joining room ${20091913}: ${err}`)
-                                })
-                        })
+        localStorage.setItem("avatar",this.state.avatar)
+        let userId = localStorage.getItem("userId")
+        let user_name = localStorage.getItem("user_name")
+        let avatar=localStorage.getItem("avatar")
+        axios.put('http://localhost:3001/updateUser',{userId,user_name,avatar})
 
-                        .catch(err => {
-                            console.log('Error on connection', err)
-                        })
-                    // history.push('/Session')
-                    // })
-                })
-            )
+        // chatUtils.updateUser(this.state.id, {
+        //   first_name: this.state.first_name,
+        //   last_name: this.state.last_name,
+        //   phone: this.state.phone,
+        //   avatar: this.state.avatar,
+        //   username: this.state.username,
+        //   password: this.state.password
+        // })
+        //     .then(chatUtils.login(this.state.username, this.state.password)
+        //         .then((data) => {
+        //             localStorage.setItem("userId", data.data[0]._id)
+        //             localStorage.setItem("user_name", data.data[0].username)
+        //         })
+        //         .then(() => {
+        //             let userId = localStorage.getItem("userId")
+        //             let user_name = localStorage.getItem("user_name")
+        //             console.log('user ' + userId)
+        //             axios.put('http://localhost:3001/updateUser',{})
+        //             // .then(()=>{
+        //             console.log(userId, user_name)
+        //             const tokenProvider = new Chatkit.TokenProvider({
+        //                 url: 'http://localhost:3001/authenticate',
+        //             });
+        //             const chatManager = new Chatkit.ChatManager({
+        //                 instanceLocator: 'v1:us1:366d4bfd-9da9-4a3c-8b98-fb24d065efc5',
+        //                 userId,
+        //                 tokenProvider
+        //             });
+        //             chatManager.connect()
+        //                 .then(currentUser => {
+        //                     this.setState({
+        //                         currentUser
+        //                     })
+        //                     console.log(this.state.currentUser)
+        //                     console.log('Successful connection')
+        //                     currentUser.joinRoom({ roomId: '20091913' })
+        //                         .then(room => {
+        //                             console.log(`Joined room with ID: ${room.id}`)
+        //                         })
+        //                         .catch(err => {
+        //                             console.log(`Error joining room ${20091913}: ${err}`)
+        //                         })
+        //                 })
+
+        //                 .catch(err => {
+        //                     console.log('Error on connection', err)
+        //                 })
+        //             // history.push('/Session')
+        //             // })
+        //         })
+        //     )
 
 
     }
@@ -138,7 +146,17 @@ class Profile extends Component {
       history.push('/')
   
     }
-
+    successHandler=(result)=>{
+      if(result.filesFailed.length) {
+        alert("Image failed to upload. Try again.")
+      }
+      else {
+        console.log(result.filesUploaded[0].url)      
+        this.setState({
+          avatar: result.filesUploaded[0].url
+        })
+      }
+    }
   render () {
     return (
       <div>
@@ -150,9 +168,21 @@ class Profile extends Component {
         <div className='profileContainer' >
           
           <Grid container justify='center' alignItems='center' className='Profile' >
-            <Avatar alt='Remy Sharp' src='https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' className='Profilepic' />
+          <Avatar alt='Remy Sharp' src={this.state.avatar} className='Profilepic' />
           </Grid>
-          <Grid container justify='center' alignItems='center' className='Name'>
+          <Grid container justify='center' alignItems='center' className='Profile' >
+
+          <ReactFilestack
+            apikey="AUJn7r4EcQC6XBAhaYWpZz"
+            customRender={({ onPick }) => (
+            <div>
+              <button onClick={onPick}>Update Photo</button>
+            </div>
+            )}
+            onSuccess={this.successHandler}
+          />
+</Grid>
+          {/* <Grid container justify='center' alignItems='center' className='Name'>
       
           </Grid>
           <br />
@@ -209,7 +239,7 @@ class Profile extends Component {
                 ),
               }}/>
 
-          </Grid>
+          </Grid> */}
           <Grid container justify='center' alignItems='center' className='Update'>
             <Button variant="outlined" color="inherit" className='SaveButt' onClick={this.handleUpdateUser}>Update</Button>
             <Button variant="outlined" color="secondary" className='CancelButt'>Cancel</Button>
