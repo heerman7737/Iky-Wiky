@@ -1,7 +1,8 @@
  import React, { Component } from 'react'
  import 'emoji-mart/css/emoji-mart.css'
  import { Picker } from 'emoji-mart'
- import IconButton from '@material-ui/core/Icon';
+ import Icon from '@material-ui/core/Icon';
+ import TagFaces from '@material-ui/icons/TagFaces'
  class SendMessageForm extends Component {
    constructor(props) {
      super(props)
@@ -53,6 +54,7 @@
        },
        form: {
          display: 'flex',
+         flex:8,
        },
        input: {
          color: 'inherit',
@@ -71,17 +73,13 @@
         boxShadow:'5px 5px 20px 0px rgba(0,0,0,0.5)',
       },
       button: {
-      width:'100%',
-      background: '#6e706f',
-      color:'white',
       top:'5px',
-       
       }
        
      }
      return (
        <div style={styles.container}>
-         <div>
+         <div style={{display:'flex', justifyContent:'space-between'}}>
            <form onSubmit={this.onSubmit} style={styles.form}
 >
              <input
@@ -101,14 +99,14 @@
            <>
            <Picker style={styles.emojiPicker} onSelect={this.addEmoji}           
             />  
-            <IconButton style={styles.button} 
+            <Icon style={styles.button} 
             
-            onClick={this.toggleEmojiButton}>Emoji</IconButton>
+            onClick={this.toggleEmojiButton}><TagFaces/></Icon>
            </>
             :
-            <IconButton style={styles.button} 
+            <Icon style={styles.button} 
             
-            onClick={this.toggleEmojiButton}>Emoji</IconButton>
+            onClick={this.toggleEmojiButton}><TagFaces/></Icon>
            }
            </span>
          </div>
