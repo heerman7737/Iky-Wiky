@@ -12,7 +12,7 @@ const Banner = props => {
                 <Toolbar className="Tools">
                
                     <Typography variant="h4" className="Logo">
-                        Babble
+                        Blabble
                     </Typography>
              
                     <div className="toggle-container">

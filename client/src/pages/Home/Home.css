@@ -11,6 +11,12 @@
     background:white;
 }
 
+.light-mode .welMsg{
+background:#b0d3bf;
+}
+
+
+
 .dark-mode .nav {
     background-color:#6e706f;
 }
@@ -59,6 +65,8 @@
 .dark-mode .profileIcons{
     color:white;
 }
+
+
 
 #AppBar {
     display:flex;
@@ -203,6 +211,35 @@ input#switch{
 
 }
 
+.welMsg {
+    height:200px!important;
+    width:80%;
+    background:rgba(49,47,47);
+    color:white;
+    padding:20px;
+    margin-top: 8%;
+    border-radius:15px  ;
+    -webkit-border-radius:15px  ;
+    -moz-border-radius:15px  ;
+    -ms-border-radius:15px  ;
+    -o-border-radius:15px  ;
+    -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.5);
+}
+
+.welMsg .p {
+    font-weight: bolder;
+    text-align: center;
+    font-size: 22px;
+    margin-top:10%;
+}
+
+.welMsg .h3 {
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Leckerli One', cursive !important;
+}
 
 
   
