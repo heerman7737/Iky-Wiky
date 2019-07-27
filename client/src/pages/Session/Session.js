@@ -97,7 +97,7 @@ changingRoom(e){
           messages:[]
         })
         return currentUser.subscribeToRoom({
-            roomId: '20092547',
+            roomId: '20093927',
             messageLimit: 100,
             hooks: {
                 onMessage: message => {
