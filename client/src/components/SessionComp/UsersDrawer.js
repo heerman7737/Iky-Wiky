@@ -47,8 +47,7 @@ const useStyles = makeStyles(theme =>
     },
     drawerPaper: {
       width: drawerWidth,
-      // background: 'linear-gradient(rgba(10,10,10),#fff )',
-      backgroundImage: 'linear-gradient(to left, #272828, #474a4a, #6a6f6e, #909793, #b9c0ba);',
+      backgroundImage: 'linear-gradient(to right, #6e706f, #5d5f5f, #4e4f4f, #3f3f3f, #303030)',
       
     },
     drawerHeader: {

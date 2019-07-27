@@ -1,7 +1,7 @@
  import React, { Component } from 'react'
  import 'emoji-mart/css/emoji-mart.css'
  import { Picker } from 'emoji-mart'
-
+ import Button from '@material-ui/core/Button';
  class SendMessageForm extends Component {
    constructor(props) {
      super(props)
@@ -34,17 +34,22 @@
       text: this.state.text + emoji
     })
   }
+
   toggleEmojiButton=(e)=>{
     e.preventDefault()
-    this.setState({clickEmoji:!this.state.clickEmoji})
+    this.setState({clickEmoji:!this.state.clickEmoji}
+      
+      )
     
   }
+
 
    render() {
      const styles = {
        container: {
          padding: 10,
          borderTop: '1px #589d62 solid',
+         
        },
        form: {
          display: 'flex',
@@ -57,6 +62,22 @@
          flex: 1,
          fontSize: 16,
        },
+       emojiPicker: {
+        position: "absolute",
+        bottom: 100,
+        right:36,
+        cssFloat: "right",
+        marginLeft: "200px",
+        boxShadow:'5px 5px 20px 0px rgba(0,0,0,0.5)',
+      },
+      button: {
+      width:'100%',
+      background: '#6e706f',
+      color:'white',
+      top:'5px',
+       
+      }
+       
      }
      return (
        <div style={styles.container}>
@@ -75,9 +96,15 @@
 
            </form>
            <span>
+            
            {this.state.clickEmoji ?
-           <Picker onSelect={this.addEmoji}           
-            /> : <button onClick={this.toggleEmojiButton}>Emoji</button>
+           <Picker style={styles.emojiPicker} onSelect={this.addEmoji}           
+            />  
+            
+            :
+            <Button style={styles.button} 
+            
+            onClick={this.toggleEmojiButton}>Emoji</Button>
            }
            </span>
          </div>
